@@ -1,0 +1,9 @@
+APP_DEBUG=true
+
+APP_ENV=local
+
+DB_HOST=localhost
+DB_DATABASE=bd_laravel
+DB_USERNAME=root
+DB_PASSWORD=sucesso
+

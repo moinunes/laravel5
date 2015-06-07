@@ -1,0 +1,97 @@
+<?php
+/**************************************************************************
+* 
+*  produtos_exibir_grid
+*  EXIBE o grid
+***************************************************************************/
+
+$titulo = 'Cadastro - Produtos';
+
+//dd(' fim ');
+////////////////////////////////////// provisório
+$filtro = new \stdClass();
+$filtro->filtro_sigla ='0';
+$filtro->filtro_descricao ='0';
+////////////////////////////////////////////////////////
+
+?>
+
+
+<?php $__env->startSection('content'); ?>
+
+
+
+<div class="row">  
+  <div class="col-md-10 col-md-offset-1">      
+
+  <div class="well body-hight">
+
+
+    <!-- monta os filtros para pesquisa -->
+    <fieldset style="width:45%">
+      <legend>Pesquisar</legend>           
+      
+      <?php echo Form::open(['url'=>'produto/search', 'class'=>'navbar-form']); ?>
+
+    <table class="table-responsive" width="100%" border="0">
+        <tr>
+           <td width="25%">Código</td>
+           <td width="60%">Descrição</td>
+           <td width="15%"></td>
+        </tr>                      
+        <tr>                      
+          <td><input  type='text' id="filtro_sigla"     name="filtro_sigla"     value="<?php echo e($filtro->filtro_sigla); ?>"    size="10" maxlength="10" ></td>
+          <td><input  type='text' id="filtro_descricao" name="filtro_descricao" value="<?php echo e($filtro->filtro_descricao); ?>" size="30" maxlength="30" ></td>                  
+          <td><button type="submit" class="btn btn-success">Filtrar</button></td>
+
+        </tr>
+      </table>
+      </form><?= Form::close();?>
+    </fieldset>
+
+    <!-- exibe a grid da pesquisa -->
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th width="15%">Código</th>
+                <th width="25%">Descrição</th>
+                <th width="15%">Quantidade</th>
+                <th width="15%">Preço</th>
+                <th width='30%'>
+          <!-- exibe os links [incluir,imprimir] -->
+          <a href="/produto/create"  class="btn btn-success"><span class="glyphicon glyphicon-plus" ></a>
+          <a href="/produto/show    " class="btn btn"><span class="glyphicon glyphicon-print" ></span></a>
+        </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($tables as $table): ?>
+            <tr>
+                <td><?php echo e($table->codigo); ?></td>
+                <td><?php echo e($table->descricao); ?></td>
+                <td><?php echo e($table->quantidade); ?></td>
+                <td><?php echo e($table->preco); ?></td>
+                <td>
+                  <!-- exibe os links [consultar,alterar,excluir] -->
+                  <a href="<?php echo e(action('ProdutoController@consultar', $table->id)); ?>"><span class="glyphicon glyphicon-search"></span></a>&nbsp;&nbsp;
+                  <a href="<?php echo e(URL::to('produto/'.$table->id.'/edit')); ?>"  ><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+                  <a href="<?php echo e(action('ProdutoController@delete', $table->id)); ?>"  ><span class="glyphicon glyphicon-trash" ></span></a>&nbsp;&nbsp;
+                </td>
+            </tr>
+        <?php endforeach; ?>
+
+        </tbody>
+
+     </table>
+     <center>
+        <?php echo $tables->render(); ?>
+
+     </center>
+</div>
+
+  </div>    
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.layout_main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

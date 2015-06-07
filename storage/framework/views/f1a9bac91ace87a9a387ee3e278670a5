@@ -1,0 +1,40 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="well body-hight">
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Job</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($tables as $table): ?>
+            <tr>
+                <td><?php echo e($table->name); ?></td>
+                <td><?php echo e($table->email); ?></td>
+
+                <td><?php echo e($table->job); ?></td>
+                <td><?php echo e($table->salary); ?></td>
+
+                <td><center><a href = "<?php echo e(URL::to('table/'.$table->id.'/edit')); ?>" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a></center></td>
+    <td><center><a href = "<?php echo e(URL::to('table/'.$table->id.'/consultar')); ?>" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Consultar&nbsp;&nbsp;</a></center></td>
+        <td><center><a href = "<?php echo e(action('TableController@delete', $table->id)); ?>" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a></center></td>      
+        </tr>
+        <?php endforeach; ?>
+
+        </tbody>
+
+     </table>
+     <center>
+        <?php echo $tables->render(); ?>
+
+     </center>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

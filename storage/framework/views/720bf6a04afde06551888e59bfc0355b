@@ -1,0 +1,61 @@
+<?php $__env->startSection('content'); ?>
+
+    <?php if($errors->any()): ?>
+      <ul class="alert alert-danger"> 
+         <?php foreach($errors->all() as $error): ?>
+               <li><?php echo e($error); ?></li>
+         <?php endforeach; ?>
+    </ul>
+  
+     <?php endif; ?>
+
+     <div class="well body-hight">
+
+         <?php echo Form::open(['url'=>'table','class'=>'form-signup form-paddind']); ?>
+
+
+
+         <div class="form-group">
+
+             <?php echo Form::text('name',null,['class'=>'form-control from-width','placeholder'=>'name']); ?>
+
+
+         </div>
+         <div class="form-group">
+
+             <?php echo Form::text('email',null,['class'=>'form-control from-width','placeholder'=>'email']); ?>
+
+
+         </div>
+         <div class="form-group">
+
+             <?php echo Form::text('job',null,['class'=>'form-control from-width','placeholder'=>'job']); ?>
+
+
+         </div>
+         <div class="form-group">
+
+             <?php echo Form::text('salary',null,['class'=>'form-control from-width','placeholder'=>'salary']); ?>
+
+
+         </div>
+
+         <div class="form-group">
+
+             <?php echo Form::submit('Create Data',['class'=>'btn btn-large btn-primary btn-block']); ?>
+
+
+         </div>
+
+         <?php echo Form::close(); ?>
+
+
+
+
+     </div>
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layouts.user', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

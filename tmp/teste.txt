@@ -1,0 +1,525 @@
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%oi%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%oi%'
+                
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+->1=1
+->1=1
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%a%'
+                
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+->1=1
+-> codigo    LIKE '%%' AND
+                    descricao LIKE '%1%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%a%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                
+-> codigo    LIKE '%1%' AND
+                    descricao LIKE '%%'
+                

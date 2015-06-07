@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Laravel</title>
+
+	<link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
+
+        <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css')); ?>" rel="stylesheet">
+        <link href="<?php echo e(asset('http://fonts.googleapis.com/css?family=Crimson+Text')); ?>" rel='stylesheet' type='text/css'>
+	
+</head>
+<body>
+	
+    <div class="container">
+        <?php echo $__env->make('users.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php if(Session::has('flash_message')): ?>
+        
+        <div class="alert alert-success">
+            <?php echo e(Session::get('flash_message')); ?>
+
+        </div>
+        
+        <?php endif; ?>
+        
+        <?php echo $__env->yieldContent('content'); ?>
+        
+         <?php echo $__env->make('users.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

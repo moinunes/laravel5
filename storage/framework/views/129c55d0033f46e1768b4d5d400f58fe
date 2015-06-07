@@ -1,0 +1,104 @@
+<?php
+
+/**************************************************************************
+* 
+*  produtos_grid
+*
+*  EXIBE o grid
+*
+***************************************************************************/
+
+$titulo = 'Cadastro - Produtos';
+
+?>
+
+
+<?php $__env->startSection('content'); ?>
+
+
+
+<div class="row">  
+  <div class="col-md-10 col-md-offset-1">      
+
+  <!-- título -->
+    <div class="div_titulo">
+      <?php echo e($titulo); ?>
+
+    </div>
+
+  <div class="div_grid">
+
+
+  
+    <!-- monta os filtros para pesquisa -->
+    <fieldset style="width:45%">
+      <legend>Pesquisar</legend>
+      <?php echo Form::open(['url'=>'produto/', 'class'=>'navbar-form']); ?>
+
+    <table class="table-responsive" width="100%" border="0">
+        <tr>
+           <td width="25%">Código</td>
+           <td width="60%">Descrição</td>
+           <td width="15%"></td>
+        </tr> 
+        <tr>
+          <td><input  type='text' name="filtro_codigo"    value="<?php echo e($filtros->filtro_codigo); ?>"    size="10" maxlength="10" ></td>
+          <td><input  type='text' name="filtro_descricao" value="<?php echo e($filtros->filtro_descricao); ?>" size="30" maxlength="30" ></td>                  
+          <td><button type="submit" class="btn btn-success">Filtrar</button></td>
+        </tr>
+      </table>
+      </form><?= Form::close();?>
+    </fieldset>
+
+    <!-- exibe a grid da pesquisa -->
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th width='10%'>
+                  <!-- exibe os links [incluir,imprimir] -->
+                  <a href="<?php echo e(action('ProdutoController@crud',['incluir' ,0])); ?>"><span class="btn btn-success glyphicon glyphicon-plus"></span></a>&nbsp;&nbsp;
+                  <a href="<?php echo e(action('ProdutoController@crud',['imprimir',0])); ?>"><span class="btn btn-success glyphicon glyphicon-print"></span></a>&nbsp;&nbsp;
+                </th>
+                <th width="10%">Código</a></th>
+                <th width='15%'><a href="/produto/?order=codigo&page=<?php echo e($filtros->page); ?>">Código</a></th>
+                <th width="35%">Descrição</th>
+                <th width="20%">Quantidade</th>
+                <th width="25%">Preço</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach( $rs as $item ): ?>                   
+              <tr>
+
+                <td>
+                  <!-- exibe os links [consultar,alterar,excluir] -->
+                  <a href="<?php echo e(action('ProdutoController@crud',['consultar',$item->id])); ?>"><span class="glyphicon glyphicon-search"></span></a>&nbsp;&nbsp;
+                  <a href="<?php echo e(action('ProdutoController@crud',['alterar'  ,$item->id])); ?>"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+                  <a href="<?php echo e(action('ProdutoController@crud',['excluir'  ,$item->id])); ?>"><span class="glyphicon glyphicon-trash"></span></a>&nbsp;&nbsp;                  
+                </td>
+              
+                <td><?php echo e($item->codigo); ?></td>
+                <td><?php echo e($item->descricao); ?></td>
+                <td><?php echo e($item->quantidade); ?></td>
+                <td><?php echo e($item->preco); ?></td>               
+            </tr>
+        <?php endforeach; ?>
+
+        </tbody>
+
+     </table>
+     </div>    
+
+     <div class="div_paginator">
+        <?php echo $rs->render(); ?>
+
+     </div>
+
+
+  </div>    
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.layout_main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

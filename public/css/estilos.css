@@ -1,0 +1,69 @@
+
+.cor_verde {background-color: #d0e9c6;}
+.cor_branca {background-color: #fff;}
+.cor_preta {background-color: #000;}
+.cor_cinza { background-color: #ccc;}
+.cor_form { background-color: #EDF6F9;}
+.cor_titulo { background-color: #EDF0F0;}
+
+
+.hr1 {
+   margin-top: 10px;
+   border: 1px solid #fff;
+      color: #fff;
+      background-color: #fff;
+      height: 1px; }
+
+.div_logo {padding: 4px; color:red; font-family:trsans-serif; font-size: 16px; }
+
+.div_titulo { 
+   padding-left: 7px; color:#999999; font-size: 16px; 
+   background-color: #EDF0F0;
+   border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.div_paginator { 
+   margin-top:-20px;
+   
+}
+
+.div_form { 
+   padding: 10px;
+   color:#999999; 
+   background-color: #EDF6F9;
+   font-size: 12px; 
+   border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+
+.div_grid {
+  min-height: 400px;  
+  padding: 8px;
+  margin: 0px;
+  background-color: #EDF6F9;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.div_botoes { 
+   padding: 10px;
+   color:#999999; 
+   font-size: 12px; 
+}
+
+.obrigatorio { 
+   color: #000;
+   font-weight: bold;
+}
+
+.alerta { 
+   color: #ff0000;
+}
+
+
+

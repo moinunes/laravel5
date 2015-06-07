@@ -1,0 +1,106 @@
+<?php
+/**************************************************************************
+*  produtos_form - Cadastro de produtos
+*
+*  Exibe o Form 
+*
+***************************************************************************/
+
+$titulo = 'Cadastro de Produtos';
+
+?>
+
+
+<?php $__env->startSection('content'); ?>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">      
+    <!-- título -->
+    <div class="div_titulo">
+      <?php echo e(hlp_view::obter_titulo($acao)); ?> - <?php echo e($titulo); ?> 
+    </div>
+         
+    <div class="div_form">       
+     
+        <?php if( $acao == 'incluir' ): ?>            
+            <?php echo Form::open( [ 'method'=>'PATCH','action'=>['ProdutoController@update'],'class'=>'form-signup form-paddind']); ?>
+
+         <?php else: ?>
+            <?php echo Form::model($table,['method'=>'PATCH','action'=>['ProdutoController@update',$table->id],'class'=>'form-signup form-paddind']); ?>
+
+         <?php endif; ?>
+
+          <table border="0" width="100%">          
+            <tr>
+              <td align="right" colspan="4">* campos obrigatórios</td>                
+            </tr>
+            <tr class='obrigatorio'>
+              <td width="15%">Código*</td>    
+              <td width="85%">Descrição*</td>
+            </tr>
+            <tr>                  
+              <td> 
+                <input name="acao" type="hidden" value="<?php echo e($acao); ?>">
+                <?php echo Form::hidden('id',null, [ 'size' => 10, $readonly ] ); ?>
+
+                <?php echo Form::text('codigo',null, [ 'size' => 10, $readonly ] ); ?>
+
+             </td>
+             <td>                
+                <?php echo Form::text('descricao', null, ['size' => 50, $readonly  ] ); ?>
+
+             </td>
+            </tr>
+         
+            <tr class='obrigatorio'>
+              <td>Quantidade*</td>    
+              <td>Preço*</td>
+            </tr>
+            <tr>                  
+              <td>
+                 <?php echo Form::text( 'quantidade', null, [ 'size'=>10, $readonly  ] ); ?>
+
+              </td>
+             <td>                
+                <?php echo Form::text( 'preco', null,[ 'size' => 10, $readonly  ] ); ?>
+
+             </td>
+            </tr>
+
+            <tr>                  
+              <td colspan="5">              
+              <hr class="hr1">
+                <div class="pull-right"> 
+                  <?php if( $acao == 'consultar' ): ?>                  
+                    <a href="/produto/" class="btn btn-default">Voltar</a>
+                  <?php else: ?>
+                    <a href="/produto/" class="btn btn-default">Cancelar</a>
+                    <button type="submit" class="btn btn-success">Confirmar</button>                     
+                  <?php endif; ?>  
+                  </div> 
+
+              </td>
+              </tr>        
+        </table> 
+        
+         <?php echo Form::close(); ?>
+
+
+     </div>
+
+    <?php if( count($errors) > 0): ?>
+      <div id="validar" class="panel panel-footer cor_branca">       
+          Erros:<br />
+          <ul  class="alert alert-danger">
+            <?php foreach( $errors->all() as $e ): ?>                     
+              <li><?php echo e($e); ?></li>
+            <?php endforeach; ?>
+          </ul>
+      </div>
+    <?php endif; ?>
+     
+  </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.layout_main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

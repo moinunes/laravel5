@@ -1,0 +1,30 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="row">
+   <div class="col-md-10 col-md-offset-1">
+      
+      <div class="panel-body">					
+         <table border="0"  width="100%">
+            <tr height="50">
+               <td width="15%">Objetivo:</td>               
+               <td width="85%">- Aprender laravel</td>               
+            </tr>
+            <tr>
+               <td>Implementações:</td>
+               <td>- Controle de Login</td>               
+            </tr>
+            <tr>
+               <td></td>
+               
+               <td>- Crud completo</td>
+            </tr>
+           
+         </table>
+      </div>
+
+   </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.layout_main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

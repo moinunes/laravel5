@@ -1,0 +1,71 @@
+<?php $__env->startSection('content'); ?>
+
+
+
+    <?php if($errors->any()): ?>
+      <ul class="alert alert-danger"> 
+         <?php foreach($errors->all() as $error): ?>
+               <li><?php echo e($error); ?></li>
+         <?php endforeach; ?>
+      </ul>
+  
+     <?php endif; ?>
+
+     
+     <div class="well body-hight">
+        
+         
+         <?php if( $acao == 'C' ): ?>           
+           <?php echo Form::model( $table, ['route' => 'table.index', 'class'=>'form-signup form-paddind' ] ); ?>
+
+         <?php else: ?>
+            <?php echo Form::model($table,['method'=>'PATCH','action'=>['ProdutoController@update',$table->id],'class'=>'form-signup form-paddind']); ?>
+
+         <?php endif; ?>
+
+         <div class="form-group">
+<input name="acao" type="hidden" value="<?php echo e($acao); ?>">
+             <?php echo Form::text('name',null,['class'=>'form-control from-width','placeholder'=>'name']); ?>
+
+
+         </div>
+         <div class="form-group">
+
+             <?php echo Form::text('email',null,['class'=>'form-control from-width','placeholder'=>'email']); ?>
+
+
+         </div>
+
+         <div class="form-group">
+
+             <?php echo Form::text('job',null,['class'=>'form-control from-width','placeholder'=>'job']); ?>
+
+
+         </div>
+         <div class="form-group">
+
+             <?php echo Form::text('salary',null,['class'=>'form-control from-width','placeholder'=>'salary']); ?>
+
+
+         </div>
+
+         <div class="form-group">
+
+             
+          <?php if( $acao == 'C' ): ?>                  
+             <a href="/table/" class="btn btn-default">Voltar</a>
+          <?php else: ?>
+             <a href="/table/" class="btn btn-default">Cancelar</a>
+             <button type="submit" class="btn btn-success">Confirmar</button>                     
+          <?php endif; ?>
+
+         </div>
+
+         <?php echo Form::close(); ?>
+
+
+     </div>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.layout_main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Sistema Laravel 5</title>
+
+   <!-- Scripts -->
+   <link href="/css/app.css" rel="stylesheet">
+   <link href="/css/estilos.css" rel="stylesheet">
+   <link href="/css/menu.css" rel="stylesheet">
+   
+   <script src="/js/jquery.min.js"></script>
+   <script src="/js/bootstrap.min.js"></script>
+        
+   
+   
+   
+   
+   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+   <![endif]-->
+   
+</head>
+
+<body>
+   <?php $nome_sistema ='PROJETO - Laravel 5' ?>
+    
+   <nav class="navbar navbar-default cor_verde">
+      <div class="container-fluid">
+         
+         <?php if(Auth::guest()): ?>         
+            <div class="col-md-10 col-md-offset-1">
+               <table border="0" width="100%">
+                  <tr>
+                     <td width="10%"><div class="div_logo"><a target="blank" href="http://laravel.com"><img src="/img/logo.png"></a></div></td>
+                     <td width="35%"><div class="title"><?= $nome_sistema?></div></td>
+                     <td width="35%">
+                        <ul class="nav navbar-nav navbar-right">
+                           <li><a href="/auth/login">Entrar</a></li>
+                        </ul>
+                     </td>
+                     <td width="35%">
+                        <ul class="nav navbar-nav navbar-right">
+                           <li><a href="/auth/register">Registrar</a></li>
+                        </ul>
+                     </td>
+                  </tr>
+               </table>
+            </div>
+         <?php else: ?>
+            <div class="row" >               
+               
+               <table class="table-responsive" border="0" width="100%">
+                  <tr>
+                     <td width="10%"></td>
+                     <td width="10%"><div class="div_logo"><a target="blank" href="http://laravel.com"><img src="/img/logo.png"></a></div></td>
+                     <td width="30%"><div class="title"><?=$nome_sistema?></div></td>
+                     <td width="25%"><div class="text-muted"><?= 'usuário: '.Auth::user()->name?></div></td>
+                     <td width="25%"><div class="text-info"><?=date("d/m/Y")?></div></td>
+                  </tr>
+                  <tr>
+                     <td colspan="5"><hr></td>                     
+                  </tr>
+                  
+               </table>                 
+            </div>
+         
+            <div class="row">
+               
+               <div class="col-md-10 col-md-offset-1">
+                  <nav id="menu-wrap">    
+                     <ul id="menu">
+                        <li><a href="/">Home</a></li>      
+                        <li><a href="/produtos">Produtos</a></li>
+                        <li><a href="/unidadesmedida">Unidades de Medida</a></li>
+                        <li><a href="#">Cadastros</a>
+                           <ul>
+                              <li><a href="/unidadesmedida">Unidades de Medida</a></li>
+                              <li><a href="/produtos">Produtos</a>
+                                 <ul>
+                                    <!-- aqui pode-se criar itens de sub -->
+                                    <!--<li><a href="#">item 1</a></li> -->
+                                    <!--<li><a href="#">item 2</a></li> -->
+                                 </ul>							
+                              </li>
+                           </ul>					
+                       </li>
+                       <li><a href="/auth/logout">Sair</a></li>     
+                     </ul>
+                  </nav>                  
+               </div>
+            </div>
+         
+         
+         <?php endif; ?>
+                     
+      </div>  
+   </nav>
+
+    <div class="container-fluid">
+	<?php echo $__env->yieldContent('content'); ?>
+    </div>
+
+   <nav class="navbar navbar-fixed-bottom cor_verde">
+      <div class="container-fluid">
+         &nbsp;&nbsp;<br>&nbsp;&nbsp;
+      </div>  
+   </nav>
+   
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+
+- - - - - - - - - - - - - - Instalar laravel 5 - -  - - - - - - - - - - - - - 
+1 - sudo apt-get install curl
+2 - curl -sS https://getcomposer.org/installer | php
+3 - mv composer.phar /usr/local/bin/composer
+4 – cd /var/www
+5 – sudo composer create-project laravel/laravel /var/www/nome_do_seu_projeto –prefer-dist
+6 – sudo chmod -R 777 storage/
+
+- - - - - - - - - - - - - - Atualizar o  laravel 5 - -  - - - - - - - - - - - - - 
+sudo composer require "illuminate/html":"5.0.*"
+
+//.. - criar arquivo .env para configurações locais
+APP_DEBUG=true
+APP_ENV=local
+DB_HOST=localhost
+DB_DATABASE=nome_do_banco
+DB_USERNAME=usuario
+DB_PASSWORD=senha
+
+
+//.. php artisan migrate --> lê a pasta /database/migrations e cria as tabelas: "users, password_resets"
+//.. as demais tabelas é só rodar o "scripts_das_tabelas.sql"
+php artisan migrate
+
+
+//.. exibe o ambiente corrente
+php artisan env
+Current application environment: local
+
+//.. criando um controller
+php artisan make:controller UserController
+
+
+- - - - - - - - - - - - - - Auto load da pasta Libraries - -  - - - - - - - - - - - - - 
+//.. incluir no app.php a linha abaixo
+   a) 'FPDF'            => 'App\Libraries\FPDF\fpdf',
+      'Infra_Relatorio' => 'App\Libraries\infra_relatorio',
+   b) executar: /etc/www/laravel5/composer dump-autoload
+
+
