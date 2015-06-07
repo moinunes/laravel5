@@ -151,4 +151,43 @@ class AdminController extends Controller {
       Paginator::currentPageResolver( function() use ( $page ) { return $page; });
    }
    
+   /**
+   * Obtém o Where com os campos do filtro
+   * 
+   * @return    string   $where
+   */   
+   public function obter_where( &$where ) {
+      $where = '';
+      $id_user  = Auth::user()->id;
+      $registro = DB::select(' SELECT filtros FROM tbfiltros 
+                               WHERE id_user = :id_user AND controller = :controller' , 
+                                     [ 'id_user' =>  $id_user, 'controller' => Request::segment(1)  ] );      
+      $registro = $registro[0];      
+      $filtros  = substr( $registro->filtros, 0, strlen($registro->filtros)-1 );
+      $array_filtros = explode( ';', $filtros  ) ;      
+      foreach ( $array_filtros as $index => $valor ) {
+         $array_filtro = explode( '=>', $valor  );
+         if ( $array_filtro[1] ) {
+            $campo = str_replace('filtro_', '', $array_filtro[0] );
+            $where .= "$campo LIKE '%$array_filtro[1]%' AND ";
+         };
+      }      
+      $where = substr( trim($where), 0, strlen(trim($where))-3 );
+   }
+   
+   /**
+   * Obtém Order
+   * 
+   * @return    string   $where
+   */   
+   public function obter_order( &$order ) {
+      $where = '';
+      $id_user  = Auth::user()->id;
+      $registro = DB::select(' SELECT ordem, posicao FROM tbfiltros 
+                               WHERE id_user = :id_user AND controller = :controller' , 
+                                     [ 'id_user' =>  $id_user, 'controller' => Request::segment(1)  ] );      
+      $registro = $registro[0];
+      $order = $registro->ordem.' '.$registro->posicao;
+   }
+   
 }

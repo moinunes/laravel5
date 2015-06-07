@@ -6,6 +6,7 @@ use App\Produto;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Request;
+use DB;
 
 use Input;
 use Infra_Relatorio;
@@ -71,9 +72,9 @@ class ProdutoController extends AdminController {
           dd( ' sem ação ' );
           break;
       }
-      $table = Produto::find($id);
+      $table = Produto::find( $id );
       return view( 'produtos.produtos_form')->with( compact('table') )
-                                            ->with( 'acao', $acao )
+                                            ->with( 'acao'   , $acao )
                                             ->with('readonly', $readonly );
    }
    
@@ -106,31 +107,30 @@ class ProdutoController extends AdminController {
    *  Imprime os registros da grid
    */   
    public function imprimir() {  
-      $this->preparar_filtros();
-      if ( $this->filtros->tem_filtro == '' ) {
-         $where = " codigo    LIKE '%{$this->filtros->filtro_codigo}%' AND
-                    descricao LIKE '%{$this->filtros->filtro_descricao}%'
-                  ";
-      } else {         
+      $this->obter_where( $where );
+      $this->obter_order( $order );
+      if ( $where == '' ) {
          $where = WHERE_TODOS_REGISTROS;
-      }
-      $rs = Produto::whereRaw( $where )->orderBy( $this->filtros->order )->paginate( 999999);
+      }       
+      $rs = DB::select( "SELECT * FROM tbprodutos WHERE {$where} ORDER BY {$order}" );
+      //dd($registro);
       $rel = new Infra_Relatorio();
       $rel->titulo = 'Produtos';
       $rel->AliasNbPages();
       $rel->AddPage();
       $rel->SetFont('Times', 'B', 12);
-      $rel->Cell(20, 6,  utf8_decode('Código'    ), 0, 0, 'L');
-      $rel->Cell(60, 6,  utf8_decode('Descrição' ), 0, 0, 'L');
-      $rel->Cell(30, 6,  utf8_decode('Quantidade'), 0, 0, 'L');
-      $rel->Cell(20, 6,  utf8_decode('Preço'     ), 0, 0, 'L');
-      $rel->SetFont('Arial', '', 12);
-      $rel->Ln(4);
+      $rel->Cell(20, 2,  utf8_decode('Código'    ), 0, 0, 'L');
+      $rel->Cell(80, 2,  utf8_decode('Descrição' ), 0, 0, 'L');
+      $rel->Cell(38, 2,  utf8_decode('Quantidade'), 0, 0, 'L');
+      $rel->Cell(20, 2,  utf8_decode('Preço'     ), 0, 0, 'L');
+      $rel->Line( 205, 27, 5, 27 );
+      $rel->SetFont('Arial', '', 11);            
       foreach ($rs as $index => $registro) {
-         $rel->Cell(20, 6, $registro->codigo,     0, 0, 'L');
-         $rel->Cell(60, 6, $registro->descricao,  0, 1, 'L');
-         $rel->Cell(30, 6, $registro->quantidade, 0, 0, 'L');
-         $rel->Cell(20, 6, $registro->preco,      0, 0, 'L');
+         $rel->Ln( 7 );
+         $rel->Cell(20, 8, $registro->codigo,     0, 0, 'L');
+         $rel->Cell(80, 8, utf8_decode($registro->descricao),  0, 0, 'L');
+         $rel->Cell(30, 7, $registro->quantidade, 0, 0, 'L');
+         $rel->Cell(20, 6, $registro->preco,      0, 0, 'R');
       }
       $rel->Output();
    }
