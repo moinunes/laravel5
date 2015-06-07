@@ -1,4 +1,4 @@
-![alt tag](https://cloud.githubusercontent.com/assets/8324443/7734928/9297aada-ff5b-11e4-874a-74003a88463e.PNG)
+![alt tag](https://github.com/moinunes/laravel5/blob/master/public/img/logo.png)
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
