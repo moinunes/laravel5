@@ -11,11 +11,10 @@ use DB;
 use Input;
 use Infra_Relatorio;
 
-
 class GrupoController extends AdminController {
 
    /**
-   * Construtor padrão   
+   * Construtor padrão
    */
    public function __construct() {  
        parent::__construct();    
@@ -57,15 +56,17 @@ class GrupoController extends AdminController {
    * @param  int      $id
    * @return void
    */   
-   public function crud( $acao, $id ) {      
+   public function crud( $acao, $id ) {
       switch ($acao) {
          case 'incluir':
          case 'alterar':
             $readonly = '';
+            $disabled = '';
             break;
         case 'consultar':
         case 'excluir':
            $readonly = 'readonly';
+           $disabled = 'disabled';
            break;
         case 'imprimir':
            $this->imprimir();
@@ -73,10 +74,17 @@ class GrupoController extends AdminController {
           dd( ' sem ação ' );
           break;
       }
+
+      $this->obter_usuarios_nao_selecionados( $usuarios_nao_selecionados );
+      $this->obter_usuarios_selecionados( $usuarios_selecionados );
+      //print '<pre>';print_r($usuarios);dd();
       $table = Grupo::find( $id );
       return view( 'grupos.grupos_form')->with( compact('table') )
                                             ->with( 'acao'   , $acao )
-                                            ->with('readonly', $readonly );
+                                            ->with('usuarios_nao_selecionados', $usuarios_nao_selecionados )
+                                            ->with('usuarios_selecionados', $usuarios_selecionados )
+                                            ->with('readonly', $readonly )
+                                            ->with('disabled', $disabled );
    }
    
    /**
@@ -103,7 +111,10 @@ class GrupoController extends AdminController {
       }
       return redirect( 'grupo' );
    }
+
+
    
+
    /**
    *  Imprime os registros da grid
    */   
@@ -130,5 +141,20 @@ class GrupoController extends AdminController {
       }
       $rel->Output();
    }
+
+   /**
+   * Obtém os usuários Não selecionados
+   */
+   public function obter_usuarios_nao_selecionados( &$resultado ) {
+      $resultado = DB::select(' SELECT id, name FROM users WHERE NOT EXISTS ( SELECT id FROM tbgrupo_users WHERE tbgrupo_users.id_user=users.id ) ' );
+   }  
+
+   /**
+   * Obtém os usuários Selecionados
+   */
+   public function obter_usuarios_selecionados( &$resultado ) {
+      $resultado = DB::select(' SELECT users.id, users.name FROM tbgrupo_users JOIN users ON ( tbgrupo_users.id_user = users.id ) ' );
+   }  
+
 
 }

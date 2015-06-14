@@ -2,6 +2,8 @@
 
 namespace App\Libraries\Infra;
 
+use DB;
+
 /*
 * Classe helper para auxiliar nas views da aplicação 
 *
@@ -17,32 +19,39 @@ class Infra_Menu {
    * @param  string   $acao
    * @return string
    */
-   public static function montar_menu() {
+   public function montar_menu() {
+      $this->obter_menus_superior( $menu_superior );
       echo '<nav id="menu-wrap">';
-      echo '   <ul id="menu">';
-      echo '      <li><a href="/">Home</a></li>
-                  <li><a href="#">Cadastros</a>
-                     <ul>
-                        <li><a href="/unidadesmedida">Unidades de Medida</a></li>
-                        <li><a href="/produtos">Produtos</a>
-                     </ul>
-                  </li>
-                </ul>
-              </nav>  
-            '; 
-      
+      echo '<ul id="menu">';
+      echo '<li><a href="/">Home</a></li>';
+      foreach( $menu_superior as $superior ) {         
+         $this->obter_menus_itens( $menu_itens, $superior->id );         
+         echo '<li><a href="#">'.utf8_decode($superior->titulo).'</a>';
+         echo '<ul>';
+         foreach( $menu_itens as $item ) {            
+            echo "<li><a href='".$item->rota."'>".utf8_decode($item->titulo).'</a>';            
+         }         
+         echo '</ul>';
+      }
+      echo '<li><a href="/auth/logout">Sair</a></li>';
+      echo '</ul>';
+      echo '</nav>';
    }
 
 
    /**
-   * Obtém o menu
+   * Obtém os menus superiores
    */
-   public function obter_menu( &$registro, $nome ) {       
-      $registro = DB::select(' SELECT id, nome, id_pai FROM tbmenus WHERE nome = :nome', [ 'nome' => $nome ] );      
-      $registro = (object)$registro[0];
+   public function obter_menus_superior( &$resultado ) {
+      $resultado = DB::select(' SELECT id, titulo FROM tbmenus WHERE id_pai is null ' );
    }   
 
+   /**
+   * Obtém os itens de menus
+   */
+   public function obter_menus_itens( &$resultado, $id ) {
+      $resultado = DB::select(' SELECT id, titulo, rota, acao FROM tbmenus  WHERE id_pai = :id_pai', [ 'id_pai' => $id ] );
+      //dd($resultado);
+   }   
 
-
-   
 }

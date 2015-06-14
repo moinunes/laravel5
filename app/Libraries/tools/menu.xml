@@ -17,7 +17,7 @@
    <!-- Auxiliares -->
    
    <ITEM titulo="Auxiliares" nome="auxiliares" nivel="0">
-      <ITEM titulo="Produtos" nome="produto" nivel="1" >
+      <ITEM titulo="Produtos" nome="produto" rota="produto" nivel="1" >
          <ITEM titulo="Incluir"   nome="produto_incluir"   rota="produto" acao="incluir"   nivel="2" />
          <ITEM titulo="Alterar"   nome="produto_alterar"   rota="produto" acao="alterar"   nivel="2" />        
          <ITEM titulo="Excluir"   nome="produto_excluir"   rota="produto" acao="exluir"    nivel="2" />
@@ -25,12 +25,12 @@
          <ITEM titulo="Imprimir"  nome="produto_imprimir"  rota="produto" acao="imprimir"  nivel="2" />
       </ITEM>
       
-      <ITEM titulo="UF" nome="uf" nivel="1" >
+      <ITEM titulo="UF" nome="uf" rota="uf" nivel="1" >
          <ITEM titulo="Alterar"   nome="uf_alterar"   rota="uf" acao="alterar"   nivel="2" />         
       </ITEM>
 
           
-      <ITEM titulo="Clientes" nome="clientes" nivel="1" >
+      <ITEM titulo="Clientes" nome="clientes" rota="clientes" nivel="1" >
          <ITEM titulo="Incluir"   nome="clientes_incluir"   rota="clientes" acao="incluir"   nivel="2" />
          <ITEM titulo="Alterar"   nome="clientes_alterar"   rota="clientes" acao="alterar"   nivel="2" />
          <ITEM titulo="Excluir"   nome="clientes_excluir"   rota="clientes" acao="exluir"    nivel="2" />
@@ -41,7 +41,7 @@
 
    <!-- Administrativo -->
    <ITEM titulo="Administrativo" nome="administrativo" nivel="0">
-      <ITEM titulo="Usuários" nome="user" nivel="1" >
+      <ITEM titulo="Usuários" nome="user" rota="user" nivel="1" >
          <ITEM titulo="Incluir"   nome="user_incluir"   rota="user" acao="incluir"   nivel="2" />
          <ITEM titulo="Alterar"   nome="user_alterar"   rota="user" acao="alterar"   nivel="2" />
          <ITEM titulo="Excluir"   nome="user_excluir"   rota="user" acao="exluir"    nivel="2" />
@@ -49,17 +49,17 @@
          <ITEM titulo="Imprimir"  nome="user_imprimir"  rota="user" acao="imprimir"  nivel="2" />
       </ITEM>
       
-      <ITEM titulo="Grupo" nome="grupo" nivel="1" >
+      <ITEM titulo="Grupo" nome="grupo" rota="grupo" nivel="1" >
          <ITEM titulo="Incluir"   nome="grupo_incluir"   rota="grupo" acao="incluir"   nivel="2" />
          <ITEM titulo="Alterar"   nome="grupo_alterar"   rota="grupo" acao="alterar"   nivel="2" />
          <ITEM titulo="Excluir"   nome="grupo_excluir"   rota="grupo" acao="exluir"    nivel="2" />
          <ITEM titulo="Consultar" nome="grupo_consultar" rota="grupo" acao="consultar" nivel="2" />
          <ITEM titulo="Imprimir"  nome="grupo_imprimir"  rota="grupo" acao="imprimir"  nivel="2" />
       </ITEM>
-      <ITEM titulo="Permissões" nome="permissao" nivel="1" >
+      <ITEM titulo="Permissões" nome="permissao" rota="permissao" nivel="1" >
          <ITEM titulo="Alterar" nome="permissao_alterar" rota="permissao" acao="alterar" nivel="2" />
       </ITEM>      
-      <ITEM titulo="Configuração" nome="configuracao" nivel="1" >
+      <ITEM titulo="Configuração" nome="configuracao" rota="configuracao" nivel="1" >
          <ITEM titulo="Alterar" nome="configuracao_alterar" rota="configuracao" acao="alterar" nivel="2" />
       </ITEM>
       

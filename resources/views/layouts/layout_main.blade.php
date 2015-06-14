@@ -10,8 +10,8 @@
    <link href="/css/app.css" rel="stylesheet">
    <link href="/css/estilos.css" rel="stylesheet">
    <link href="/css/menu.css" rel="stylesheet">
-   
-   <script src="/js/jquery.min.js"></script>
+      
+   <script src="/js/jquery.js"></script>
    <script src="/js/bootstrap.min.js"></script>   
    
    
@@ -67,47 +67,14 @@
                </table>                 
             </div>
          
-            <div class="row">
-               
+            <div class="row">               
                <div class="col-md-10 col-md-offset-1">
-                  
-                  {{Infra_Menu::montar_menu()}}
-                  
-                  <nav id="menu-wrap">    
-                     <ul id="menu">
-                        <li><a href="/">Home</a></li>      
-                        <li><a href="/produto">Produtos</a></li>
-                        <li><a href="/unidadesmedida">Unidades de Medida</a></li>
-                        <li><a href="#">Cadastros</a>
-                           <ul>
-                              <li><a href="/unidadesmedida">Unidades de Medida</a></li>
-                              <li><a href="/produtos">Produtos</a>
-                                 <ul>
-                                    <!-- aqui pode-se criar itens de sub -->
-                                    <!--<li><a href="#">item 1</a></li> -->
-                                    <!--<li><a href="#">item 2</a></li> -->
-                                 </ul>							
-                              </li>
-                           </ul>					
-                       </li>
-
-                       <li><a href="#">Administrativo</a>
-                           <ul>
-                              <li><a href="/user">Usuários</a></li>
-                              <li><a href="/grupo">Grupos</a></li>
-                              <li><a href="/permissao">Permissões</a></li>
-                              <li><a href="/configuracao">Configuração</a></li>                              
-                           </ul>             
-                       </li>
-
-                       <li><a href="/auth/logout">Sair</a></li>     
-                     </ul>
-                  </nav>  
-
+                  <?php
+                     $menu = new Infra_Menu();
+                     $menu->montar_menu();
+                  ?>
                </div>
             </div>
-         
-         
          @endif
                      
       </div>  
