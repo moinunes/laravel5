@@ -1,9 +1,8 @@
 <?php
 /**************************************************************************
+*  produtos_form - Cadastro de produtos
 *
-* View.....: produtos_form 
-* Descrição: Cadastro de produtos
-* Objetivo.: Exibir Formulário para: incluir, alterar, consultar e excluir
+*  Exibe o Form 
 *
 ***************************************************************************/
 

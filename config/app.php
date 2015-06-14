@@ -193,14 +193,14 @@ return [
 		'Storage'   => 'Illuminate\Support\Facades\Storage',
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
-		'View'      => 'Illuminate\Support\Facades\View',            
-	       
-                'Form'      =>'Illuminate\Html\FormFacade',
-	        'Html'      =>'Illuminate\Html\HtmlFacade',
+		'View'      => 'Illuminate\Support\Facades\View',	       
+      'Form'      =>'Illuminate\Html\FormFacade',
+	   'Html'      =>'Illuminate\Html\HtmlFacade',
 
-	        'FPDF' => 'App\Libraries\FPDF\FPDF',
-	        'Infra_Relatorio' => 'App\Libraries\infra_relatorio',
-	        'hlp_view'        => 'App\Libraries\hlp_view',     
+	   'FPDF'            => 'App\Libraries\FPDF\FPDF',
+	   'Infra_Relatorio' => 'App\Libraries\infra_relatorio',
+	   'hlp_view'        => 'App\Libraries\hlp_view',     
+	   'Infra_Menu'      => 'App\Libraries\Infra\Infra_Menu',     
             
 	],
 

@@ -93,7 +93,7 @@ class AdminController extends Controller {
       $id_user         = Auth::user()->id;
       $registro = DB::select(' SELECT * FROM tbfiltros 
                                WHERE id_user = :id_user AND controller = :controller' , 
-                                     [ 'id_user' =>  $id_user, 'controller' => Request::segment(1)  ] );
+                                     [ 'id_user' =>  $id_user, 'controller' => $nome_controller  ] );      
       if( $registro ) {
          $registro = $registro[0];
          $filtros = $obj_filtros->filtros != ''    ? $obj_filtros->filtros : $registro->filtros;
@@ -106,11 +106,11 @@ class AdminController extends Controller {
             $page    = $obj_filtros->page    != ''    ? $obj_filtros->page : $registro->page;
          }
          $sql  = " UPDATE tbfiltros SET page = '{$page}', filtros = '{$filtros}', ordem = '{$ordem}', posicao = '{$posicao}' ";
-         $sql .= " WHERE id_user = '{$id_user}' ";      
+         $sql .= " WHERE id_user = '{$id_user}' AND controller = '{$nome_controller}' ";      
          DB::update( $sql );
       } else {
          DB::insert( 'INSERT INTO tbfiltros ( id_user, page, ordem, posicao, filtros, controller )
-                      VALUES ( ?,?,?,?,?,?)', [Auth::user()->id,'1','id','asc',$this->nomes_filtros , $nome_controller] );
+                      VALUES ( ?,?,?,?,?,? )', [Auth::user()->id,'1','id','asc',$this->nomes_filtros , $nome_controller] );
       }
    }   
    
@@ -119,13 +119,14 @@ class AdminController extends Controller {
    * 
    * @return void
    */   
-   public function set_filtros() {      
+   public function set_filtros() {
+      $nome_controller = Request::segment(1);
       $this->filtros   = new \stdClass();      
       $this->filtros->tem_filtro = false;
       $id_user  = Auth::user()->id;      
       $registro = DB::select(' SELECT * FROM tbfiltros 
                                WHERE id_user = :id_user AND controller = :controller' , 
-                                     [ 'id_user' =>  $id_user, 'controller' => Request::segment(1)  ] );      
+                                     [ 'id_user' =>  $id_user, 'controller' => $nome_controller  ] );      
       $registro = $registro[0];
       $registro->filtros = substr( $registro->filtros, 0, strlen($registro->filtros)-1 );      
       $array_filtros = explode( ';', $registro->filtros  ) ;
@@ -157,11 +158,12 @@ class AdminController extends Controller {
    * @return    string   $where
    */   
    public function obter_where( &$where ) {
+      $nome_controller = Request::segment(1);
       $where = '';
       $id_user  = Auth::user()->id;
       $registro = DB::select(' SELECT filtros FROM tbfiltros 
                                WHERE id_user = :id_user AND controller = :controller' , 
-                                     [ 'id_user' =>  $id_user, 'controller' => Request::segment(1)  ] );      
+                                     [ 'id_user' =>  $id_user, 'controller' => $nome_controller  ] );      
       $registro = $registro[0];      
       $filtros  = substr( $registro->filtros, 0, strlen($registro->filtros)-1 );
       $array_filtros = explode( ';', $filtros  ) ;      
@@ -181,11 +183,12 @@ class AdminController extends Controller {
    * @return    string   $where
    */   
    public function obter_order( &$order ) {
+      $nome_controller = Request::segment(1);
       $where = '';
       $id_user  = Auth::user()->id;
       $registro = DB::select(' SELECT ordem, posicao FROM tbfiltros 
                                WHERE id_user = :id_user AND controller = :controller' , 
-                                     [ 'id_user' =>  $id_user, 'controller' => Request::segment(1)  ] );      
+                                     [ 'id_user' =>  $id_user, 'controller' => $nome_controller  ] );      
       $registro = $registro[0];
       $order = $registro->ordem.' '.$registro->posicao;
    }

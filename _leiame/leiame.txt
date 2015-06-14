@@ -24,6 +24,9 @@ DB_PASSWORD=senha
 //.. as demais tabelas é só rodar o "scripts_das_tabelas.sql"
 php artisan migrate
 
+//.. ao modificar um script, ( para atualizar as estruturas das tabelas )
+php artisan migrate:refresh
+
 
 //.. exibe o ambiente corrente
 php artisan env

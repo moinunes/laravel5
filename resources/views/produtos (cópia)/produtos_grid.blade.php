@@ -1,10 +1,8 @@
 <?php
 
 /**************************************************************************
-*
-* View.....: produtos_grid 
-* Descrição: Cadastro de produtos
-* Objetivo.: Montar Formulário de pesquisa e exibir registros na grid
+*  
+*  Cadastro de Produtos
 *
 ***************************************************************************/
 

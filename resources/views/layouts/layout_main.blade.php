@@ -70,6 +70,9 @@
             <div class="row">
                
                <div class="col-md-10 col-md-offset-1">
+                  
+                  {{Infra_Menu::montar_menu()}}
+                  
                   <nav id="menu-wrap">    
                      <ul id="menu">
                         <li><a href="/">Home</a></li>      
@@ -99,7 +102,8 @@
 
                        <li><a href="/auth/logout">Sair</a></li>     
                      </ul>
-                  </nav>                  
+                  </nav>  
+
                </div>
             </div>
          

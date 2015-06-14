@@ -1,13 +1,13 @@
 <?php
 /**************************************************************************
 *
-* View.....: produtos_form 
-* Descrição: Cadastro de produtos
+* View.....: grupos_form 
+* Descrição: Cadastro de grupos
 * Objetivo.: Exibir Formulário para: incluir, alterar, consultar e excluir
 *
 ***************************************************************************/
 
-$titulo = 'Cadastro de Produtos';
+$titulo = 'Cadastro de Grupos';
 
 ?>
 
@@ -24,9 +24,9 @@ $titulo = 'Cadastro de Produtos';
     <div class="div_form">       
      
         @if ( $acao == 'incluir' )            
-            {!! Form::open( [ 'method'=>'PATCH','action'=>['ProdutoController@update'],'class'=>'form-signup form-paddind']) !!}
+            {!! Form::open( [ 'method'=>'PATCH','action'=>['GrupoController@update'],'class'=>'form-signup form-paddind']) !!}
          @else
-            {!! Form::model($table,['method'=>'PATCH','action'=>['ProdutoController@update',$table->id],'class'=>'form-signup form-paddind']) !!}
+            {!! Form::model($table,['method'=>'PATCH','action'=>['GrupoController@update',$table->id],'class'=>'form-signup form-paddind']) !!}
          @endif
 
           <table border="0" width="100%">          
@@ -34,41 +34,27 @@ $titulo = 'Cadastro de Produtos';
               <td align="right" colspan="4">* campos obrigatórios</td>                
             </tr>
             <tr class='obrigatorio'>
-              <td width="15%">Código*</td>    
+              <td width="15%">Grupo*</td>    
               <td width="85%">Descrição*</td>
             </tr>
             <tr>                  
               <td> 
                 <input name="acao" type="hidden" value="{{$acao}}">
-                {!! Form::hidden('id',null, [ 'size' => 10, $readonly ] ) !!}
-                {!! Form::text('codigo',null, [ 'size' => 10, $readonly ] ) !!}
+                {!! Form::hidden( 'id',null ) !!}
+                {!! Form::text( 'grupo', null, [ 'size' => 30, 'maxlength' => '50', $readonly ] ) !!}
              </td>
              <td>                
-                {!! Form::text('descricao', null, ['size' => 50, $readonly  ] ) !!}
+                {!! Form::text('descricao', null, ['size' => 50, 'maxlength' => '60', $readonly  ] ) !!}
              </td>
             </tr>
-         
-            <tr class='obrigatorio'>
-              <td>Quantidade*</td>    
-              <td>Preço*</td>
-            </tr>
-            <tr>                  
-              <td>
-                 {!! Form::text( 'quantidade', null, [ 'size'=>10, $readonly  ] ) !!}
-              </td>
-             <td>                
-                {!! Form::text( 'preco', null,[ 'size' => 10, $readonly  ] ) !!}
-             </td>
-            </tr>
-
             <tr>                  
               <td colspan="5">              
               <hr class="hr1">
                 <div class="pull-right"> 
                   @if ( $acao == 'consultar' )                  
-                    <a href="/produto/" class="btn btn-default">Voltar</a>
+                    <a href="/grupo/" class="btn btn-default">Voltar</a>
                   @else
-                    <a href="/produto/" class="btn btn-default">Cancelar</a>
+                    <a href="/grupo/" class="btn btn-default">Cancelar</a>
                     <button type="submit" class="btn btn-success">Confirmar</button>                     
                   @endif  
                   </div> 

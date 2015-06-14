@@ -1,6 +1,5 @@
 <?php
 
-
 /**************************************************************************
 * para atualizar a estrutura da tabela execute: 
 *                                           php artisan migrate:refresh   
@@ -10,20 +9,25 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProdutosTable extends Migration {
+class CreateMenusTable extends Migration {
+
 
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
-	public function up()	{
-		Schema::create( 'tbprodutos', function( Blueprint $table ) {
-			$table->increments('id');                       
-         $table->string('codigo','20')->unique();          
-         $table->string('descricao','100');                  
-         $table->integer('quantidade');
-         $table->decimal('preco', 18, 4);
+	public function up()
+	{
+		Schema::create('tbmenus', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('titulo','100');
+			$table->string('nome','100')->unique();
+			$table->string('rota','50');
+			$table->string('acao','50');
+			$table->integer('id_pai')->nullable();
+			$table->integer('posicao')->nullable();
 			$table->timestamps();
 		});
 	}
@@ -35,7 +39,7 @@ class CreateProdutosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop( 'tbprodutos' );
+		Schema::drop('tbmenus');
 	}
 
 }
