@@ -1,13 +1,13 @@
 <?php
 /**************************************************************************
 *
-* View.....: grupos_form 
-* Descrição: Cadastro de grupos
-* Objetivo.: Exibir Formulário para: incluir, alterar, consultar e excluir
+* View.....: permissoes_form 
+* Descrição: Cadastro de permissões
+* Objetivo.: Exibir Formulário para: cadastrar permissões dos grupos de usuários
 *
 ***************************************************************************/
 
-$titulo = 'Cadastro de Grupos';
+$titulo = 'Permissoes';
 
 ?>
 
@@ -18,17 +18,13 @@ $titulo = 'Cadastro de Grupos';
   <div class="col-md-10 col-md-offset-1">      
     <!-- título -->
     <div class="div_titulo">
-      {{hlp_view::obter_titulo($acao)}} - {{$titulo}} 
+          {{$titulo}} 
     </div>
          
     <div class="div_form">       
      
-        @if ( $acao == 'incluir' )
-            {!! Form::open( [ 'method'=>'PATCH','action'=>['GrupoController@update'],'class'=>'form-signup form-paddind']) !!}        
-        @else
-            {!! Form::model($table,['method'=>'PATCH','action'=>['GrupoController@update',$table->id],'class'=>'form-signup form-paddind']) !!}            
-        @endif
-
+      {!! Form::open( [ 'method'=>'PATCH','action'=>['PermissaoController@update'],'class'=>'form-signup form-paddind']) !!}        
+      
          
 
           <table border="0" width="100%">
@@ -44,44 +40,12 @@ $titulo = 'Cadastro de Grupos';
                 <input type="hidden" name="acao"  value="{{$acao}}">
                 <input type="hidden" name="ids_selecionados" id="ids_selecionados">
                 {!! Form::hidden( 'id',null ) !!}
-                {!! Form::text( 'grupo', null, [ 'size' => 30, 'maxlength' => '50', $readonly ] ) !!}
-             </td>
-             <td>                
-                {!! Form::text('descricao', null, ['size' => 50, 'maxlength' => '60', $readonly  ] ) !!}
+      
              </td>
             </tr>
            </table> 
 
-           <table border="0" width="100%">   
-            <tr class='obrigatorio'>
-              <td width="45%">Usuários</td>  
-              <td width="5%">  </td>      
-              <td width="45%">Usuários selecionados</td>
-            </tr>
-            <tr>                  
-              <td> 
-                <select id="sel_usuarios" name="sel_usuarios" size='8' class="form-control" <?=$readonly?> >
-                   @foreach ( $usuarios_nao_selecionados as $item )
-                     <option value='{{$item->id}}'>{{$item->name}}</option>
-                   @endforeach 
-                </select>
-              </td>              
-              <td align="center"> 
-                 <button type="button" id="btn_adicionar"       class="glyphicon glyphicon-chevron-right" <?=$disabled?> ></button> <br><br>
-                 <button type="button" id="btn_retirar"         class="glyphicon glyphicon-chevron-left"  <?=$disabled?> ></button> <br><br>
-                 <button type="button" id="btn_adicionar_todos" class="glyphicon glyphicon-forward"       <?=$disabled?> ></button> <br><br>
-                 <button type="button" id="btn_retirar_todos"   class="glyphicon glyphicon-backward"      <?=$disabled?> ></button> <br><br>
-              </td>
-             <td>                
-                <select id="sel_usuarios_selecionados" name="sel_usuarios_selecionados" size='8' class="form-control" <?=$readonly?> >
-                   @foreach ( $usuarios_selecionados as $item )
-                     <option value='{{$item->id}}'>{{$item->name}}</option>
-                   @endforeach 
-                </select>
-             </td>
-          </tr>
-         </table>
-
+      
         <table border="0" width="100%">   
             <tr>                  
               <td>              
@@ -102,6 +66,10 @@ $titulo = 'Cadastro de Grupos';
          {!! Form::close() !!}
 
      </div>
+
+
+
+
 
     @if ( count($errors) > 0)
       <div id="validar" class="panel panel-footer cor_branca">       

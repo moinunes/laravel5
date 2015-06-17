@@ -21,13 +21,14 @@ class GrupoRequest extends Request {
 	public function rules()	{		
 		$input = (object)Request::all();
 	
-		if ( $input->acao == 'E' ) { 
+		if ( $input->acao == 'excluir' ) { 
 			$validar = array();
 
 		} else {			
 			$validar = [
 				'grupo'      => "required|min:1|max:50|unique:tbgrupos,grupo,{$input->id}",
-				'descricao'  => 'required|min:1|max:60',				
+				'descricao'  => 'required|min:1|max:60',
+				'ids_selecionados'  => 'required|min:1',
 			];		
 
 		}
@@ -40,9 +41,15 @@ class GrupoRequest extends Request {
 	* @return array
 	*/	
 	public function messages() {
-		return [ 
-			'grupo.unique' => 'Grupo já cadastrado.',            
-      ];
+		$input = (object)Request::all();
+		$messages = array();
+		$messages = [ 'grupo.unique' => 'Grupo já cadastrado.', ];
+
+		if ( $input->acao != 'excluir' ) {			
+         $messages = [ 'ids_selecionados.required' => 'O campo Usuários selecionados é obrigatório.', ];
+      }
+      return $messages;
 	}
+
 
 }

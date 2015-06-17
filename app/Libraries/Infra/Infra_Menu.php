@@ -19,7 +19,7 @@ class Infra_Menu {
    * @param  string   $acao
    * @return string
    */
-   public function montar_menu() {
+   public function montar_menu() {      
       $this->obter_menus_superior( $menu_superior );
       echo '<nav id="menu-wrap">';
       echo '<ul id="menu">';
@@ -28,8 +28,8 @@ class Infra_Menu {
          $this->obter_menus_itens( $menu_itens, $superior->id );         
          echo '<li><a href="#">'.utf8_decode($superior->titulo).'</a>';
          echo '<ul>';
-         foreach( $menu_itens as $item ) {            
-            echo "<li><a href='".$item->rota."'>".utf8_decode($item->titulo).'</a>';            
+         foreach( $menu_itens as $item ) {
+            echo "<li><a href='/$item->rota'>".utf8_decode($item->titulo)."</a></li>";
          }         
          echo '</ul>';
       }

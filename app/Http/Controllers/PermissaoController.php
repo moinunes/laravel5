@@ -13,7 +13,7 @@ use DB;
 use Input;
 use Infra_Relatorio;
 
-class GrupoController extends AdminController {
+class PermissaoController extends AdminController {
 
    /**
    * Construtor padrão
@@ -35,18 +35,12 @@ class GrupoController extends AdminController {
    * obtém os registros para exibir no grid
    */
    public function index() {
-      $this->preparar_filtros();
-      if ( $this->filtros->tem_filtro ) {
-         $where = " grupo     LIKE '%{$this->filtros->filtro_grupo}%' AND
-                    descricao LIKE '%{$this->filtros->filtro_descricao}%'
-                ";         
-      } else {
-        $where = WHERE_TODOS_REGISTROS;
-      }
-      $rs = Grupo::whereRaw( $where )->orderBy( $this->filtros->order,  $this->filtros->posicao )
-                                       ->paginate( $this->total_registros );
       
-      return view( 'grupos.grupos_grid' )->with('rs', $rs)
+      $table = Grupo::all();
+      
+      $acao = 'incluir';
+      return view( 'permissoes.permissoes_form' )->with( compact('table') )                         
+                                         ->with( 'acao'   , $acao )
                                          ->with('filtros', $this->filtros );
    }
 
