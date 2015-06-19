@@ -6,15 +6,20 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>Sistema Laravel 5</title>
 
-   <!-- Scripts -->
-   <link href="/css/app.css" rel="stylesheet">
+   <!-- css -->
+   <link href="/css/app.css"     rel="stylesheet">
    <link href="/css/estilos.css" rel="stylesheet">
-   <link href="/css/menu.css" rel="stylesheet">
+   <link href="/css/menu.css"    rel="stylesheet">
       
-   <script src="/js/jquery.js"></script>
-   <script src="/js/bootstrap.min.js"></script>   
-   
-   
+   <!-- jquery -->
+   <script type="text/javascript" src="/js/jquery-1.4.4.js"></script>   
+   <script type="text/javascript" src="/js/jquery-ui-1.8.12.custom.min.js"></script>
+
+   <!-- checkboxtree-->
+   <link type="text/css" href="/checkboxtree/library/jquery-ui-1.8.12.custom/css/smoothness/jquery-ui-1.8.12.custom.css" rel="stylesheet"/>
+   <link type="text/css" href="/checkboxtree/jquery.checkboxtree.css" rel="stylesheet" >
+   <script src="/checkboxtree/jquery.checkboxtree.js"></script>
+
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
    <!--[if lt IE 9]>
@@ -84,11 +89,6 @@
 	<?php echo $__env->yieldContent('content'); ?>
     </div>
 
-   <nav class="navbar navbar-fixed-bottom cor_verde">
-      <div class="container-fluid">
-         &nbsp;&nbsp;<br>&nbsp;&nbsp;
-      </div>  
-   </nav>
    
 </body>
 </html>

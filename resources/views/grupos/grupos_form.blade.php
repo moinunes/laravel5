@@ -36,19 +36,15 @@ $titulo = 'Cadastro de Grupos';
               <td align="right" colspan="4">* campos obrigatórios</td>                
             </tr>
             <tr class='obrigatorio'>
-              <td width="15%">Grupo*</td>    
-              <td width="85%">Descrição*</td>
+              <td width="15%">Grupo*</td>              
             </tr>
             <tr>                  
               <td> 
-                <input type="hidden" name="acao"  value="{{$acao}}">
-                <input type="hidden" name="ids_selecionados" id="ids_selecionados">
+                <input type="hidden" name="acao"  value="{{$acao}}">                
+                {!! Form::text( 'ids_selecionados',null, ['id' => 'ids_selecionados'] ) !!}
                 {!! Form::hidden( 'id',null ) !!}
                 {!! Form::text( 'grupo', null, [ 'size' => 30, 'maxlength' => '50', $readonly ] ) !!}
-             </td>
-             <td>                
-                {!! Form::text('descricao', null, ['size' => 50, 'maxlength' => '60', $readonly  ] ) !!}
-             </td>
+             </td>             
             </tr>
            </table> 
 
@@ -104,6 +100,9 @@ $titulo = 'Cadastro de Grupos';
      </div>
 
     @if ( count($errors) > 0)
+       <?php 
+          //dd($errors); 
+       ?>
       <div id="validar" class="panel panel-footer cor_branca">       
           Erros:<br />
           <ul  class="alert alert-danger">
@@ -204,7 +203,7 @@ $titulo = 'Cadastro de Grupos';
 
 
   $( document ).ready(function() {
-     guarda_ids_selecionados();
+    guarda_ids_selecionados();
   });
   
 

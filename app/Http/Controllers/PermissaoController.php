@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Grupo;
 use App\Grupo_Users;
+use App\Permissao;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -27,20 +28,23 @@ class PermissaoController extends AdminController {
    * Define os nomes dos filtros da view
    */
    public function define_nomes_filtros() {
-      $this->nomes_filtros = "filtro_grupo=>;".
-                             "filtro_descricao=>;";
+      $this->nomes_filtros = "filtro_grupo=>;";
    }
 
    /**
    * obtém os registros para exibir no grid
    */
    public function index() {
+      $this->preparar_filtros();
+      if ( $this->filtros->tem_filtro ) {
+         $where = " grupo     LIKE '%{$this->filtros->filtro_grupo}%' ";         
+      } else {
+        $where = WHERE_TODOS_REGISTROS;
+      }
+      $rs = Grupo::whereRaw( $where )->orderBy( $this->filtros->order,  $this->filtros->posicao )
+                                       ->paginate( $this->total_registros );
       
-      $table = Grupo::all();
-      
-      $acao = 'incluir';
-      return view( 'permissoes.permissoes_form' )->with( compact('table') )                         
-                                         ->with( 'acao'   , $acao )
+      return view( 'permissoes.permissoes_grid' )->with('rs', $rs)
                                          ->with('filtros', $this->filtros );
    }
 
@@ -53,31 +57,26 @@ class PermissaoController extends AdminController {
    * @return void
    */   
    public function crud( $acao, $id_grupo ) {
-      switch ($acao) {
-         case 'incluir':
+      switch ($acao) {         
          case 'alterar':
             $readonly = '';
             $disabled = '';
             break;
 
-        case 'consultar':
-        case 'excluir':
-           $readonly = 'readonly';
-           $disabled = 'disabled';
-           break;
-
         case 'imprimir':
            $this->imprimir();
         default:
-          dd( ' sem ação ' );
           break;
       }
+
+      $table = Grupo::find( $id_grupo );
+      
 
       $this->obter_usuarios_nao_selecionados( $usuarios_nao_selecionados, $acao, $id_grupo );     
       $this->obter_usuarios_selecionados( $usuarios_selecionados, $id_grupo );
       
-      $table = Grupo::find( $id_grupo );
-      return view( 'grupos.grupos_form')->with( compact('table') )
+      
+      return view( 'permissoes.permissoes_form')->with( compact('table') )
                                             ->with( 'acao'   , $acao )
                                             ->with('usuarios_nao_selecionados', $usuarios_nao_selecionados )
                                             ->with('usuarios_selecionados', $usuarios_selecionados )
@@ -96,8 +95,7 @@ class PermissaoController extends AdminController {
       switch ( $acao ) {
          case 'incluir':            
             $grupo = new Grupo;
-            $grupo->grupo     = Input::get('grupo');
-            $grupo->descricao = Input::get('descricao');
+            $grupo->grupo     = Input::get('grupo');            
             $grupo->save();
             $this->incluir_grupo_users( $grupo->id );
             break;
@@ -133,14 +131,12 @@ class PermissaoController extends AdminController {
       $rel->AliasNbPages();
       $rel->AddPage();
       $rel->SetFont('Times', 'B', 12);
-      $rel->Cell(50, 2,  utf8_decode('Grupo'    ), 0, 0, 'L');
-      $rel->Cell(80, 2,  utf8_decode('Descrição' ), 0, 0, 'L');
+      $rel->Cell(50, 2,  utf8_decode('Grupo'    ), 0, 0, 'L');      
       $rel->Line( 205, 27, 5, 27 );
       $rel->SetFont('Arial', '', 11);            
       foreach ($rs as $index => $registro) {
          $rel->Ln( 7 );
-         $rel->Cell(50, 8, $registro->grupo,     0, 0, 'L');
-         $rel->Cell(80, 8, utf8_decode($registro->descricao),  0, 0, 'L');         
+         $rel->Cell(50, 8, $registro->grupo,     0, 0, 'L');         
       }
       $rel->Output();
    }

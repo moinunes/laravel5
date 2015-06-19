@@ -26,8 +26,7 @@ class GrupoRequest extends Request {
 
 		} else {			
 			$validar = [
-				'grupo'      => "required|min:1|max:50|unique:tbgrupos,grupo,{$input->id}",
-				'descricao'  => 'required|min:1|max:60',
+				'grupo'      => "required|min:1|max:50|unique:tbgrupos,grupo,{$input->id}",				
 				'ids_selecionados'  => 'required|min:1',
 			];		
 

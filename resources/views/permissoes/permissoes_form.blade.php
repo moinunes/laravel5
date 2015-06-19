@@ -9,61 +9,107 @@
 
 $titulo = 'Permissoes';
 
+//dd($table->grupo);
+
 ?>
 
 @extends('layouts.layout_main')
 @section('content')
 
+
+<style type="text/css">
+body {
+font-family: verdana, arial;
+font-size: 0.8em;
+}
+
+code {
+white-space: pre;
+}
+</style>
+
+<!-- start checkboxTree configuration -->
+
+
+
+<!-- end checkboxTree configuration -->
+
+<script>
+$(document).ready(function() {
+  
+  $('.jquery').each(function() {
+    eval($(this).html());
+  });
+  $('.button').button();
+});
+</script>
+
 <div class="row">
   <div class="col-md-10 col-md-offset-1">      
     <!-- título -->
     <div class="div_titulo">
-          {{$titulo}} 
+      {{$titulo}}
     </div>
          
-    <div class="div_form">       
-     
+    <div class="div_form">     
       {!! Form::open( [ 'method'=>'PATCH','action'=>['PermissaoController@update'],'class'=>'form-signup form-paddind']) !!}        
-      
-         
+      <table border="0" width="100%">
+        <tr>
+          <td width="5%">Grupo:</td>    
+          <td width="95%"  class='obrigatorio'>{{$table->grupo}}</td>    
+        </tr>            
+      </table> 
 
-          <table border="0" width="100%">
-            <tr>
-              <td align="right" colspan="4">* campos obrigatórios</td>                
-            </tr>
-            <tr class='obrigatorio'>
-              <td width="15%">Grupo*</td>    
-              <td width="85%">Descrição*</td>
-            </tr>
-            <tr>                  
-              <td> 
-                <input type="hidden" name="acao"  value="{{$acao}}">
-                <input type="hidden" name="ids_selecionados" id="ids_selecionados">
-                {!! Form::hidden( 'id',null ) !!}
-      
-             </td>
-            </tr>
-           </table> 
-
-      
-        <table border="0" width="100%">   
-            <tr>                  
-              <td>              
-              <hr class="hr1">
-                <div class="pull-right"> 
-                  @if ( $acao == 'consultar' )                  
-                    <a href="/grupo/" class="btn btn-default">Voltar</a>
-                  @else
-                    <a href="/grupo/" class="btn btn-default">Cancelar</a>
-                    <button type="submit" id="btn_confirmar" class="btn btn-success">Confirmar</button>                     
-                  @endif  
-                  </div> 
-
-              </td>
-              </tr>        
-        </table> 
+      <div id="tabs-1">
         
-         {!! Form::close() !!}
+          <code class="jquery" lang="text/javascript">
+        $('#tree1').checkboxTree();    
+         </code>
+
+          <ul id="tree1">
+          <li><input type="checkbox"><label>Auxiliares</label>
+          <ul>
+          <li><input type="checkbox"><label>Produto</label>
+          <ul>
+          <li><input type="checkbox"><label>Incluir</label>
+          <li><input type="checkbox"><label>Alterar</label>
+          </ul>
+          </ul>
+          <ul>
+          <li><input type="checkbox"><label>Cliente</label>
+          <ul>
+          <li><input type="checkbox"><label>Incluir</label>
+          <li><input type="checkbox"><label>Alterar</label>
+          <li><input type="checkbox"><label>Excluir</label>
+          </ul>
+          </ul>
+          </li>
+          <li><input type="checkbox"><label>Administrativo</label>
+          <ul>
+          <li><input type="checkbox"><label>Grupo</label>
+          <ul>
+          <li><input type="checkbox"><label>Node 2.1.1</label>
+          </ul>
+          <li><input type="checkbox"><label>Node 2.2</label>
+          <ul>
+          <li><input type="checkbox"><label>Node 2.2.1</label>
+          <li><input type="checkbox"><label>Node 2.2.2</label>
+          <li><input type="checkbox"><label>Node 2.2.3</label>
+          <ul>
+          <li><input type="checkbox"><label>Node 2.2.3.1</label>
+          <li><input type="checkbox"><label>Node 2.2.3.2</label>
+          </ul>
+          <li><input type="checkbox"><label>Node 2.2.4</label>
+          <li><input type="checkbox"><label>Node 2.2.5</label>
+          <li><input type="checkbox"><label>Node 2.2.6</label>
+          </ul>
+          </ul>
+          </ul>
+          </div>
+
+
+
+      {!! Form::close() !!}
 
      </div>
 
@@ -92,87 +138,10 @@ $titulo = 'Permissoes';
 
 <script>  
    
-   /**
-   * Adiciona o id
-   */
-   $( "#btn_adicionar" ).click(function() {      
-      var key   = $( "#sel_usuarios option:selected" ).val();
-      var valor = $( "#sel_usuarios option:selected" ).text();   
-      if( valor ) {
-         // adiciona no sel_usuarios_selecionados
-         $('#sel_usuarios_selecionados').append( $('<option>', { value : key }).text(valor) );      
-         // remove do sel_usuario
-         $('#sel_usuarios').find('option:contains('+valor+')').remove();
-
-         guarda_ids_selecionados();
-      }
-   });
-
-   /**
-   * Retira o id selecionado
-   */
-   $( "#btn_retirar" ).click(function() {      
-      var key   = $( "#sel_usuarios_selecionados option:selected" ).val();
-      var valor = $( "#sel_usuarios_selecionados option:selected" ).text();      
-      if( valor ) {
-         // adiciona no sel_usuarios
-         $('#sel_usuarios').append( $('<option>', { value : key }).text(valor) );      
-         // remove do sel_usuario
-         $('#sel_usuarios_selecionados').find('option:contains('+valor+')').remove();  
-         guarda_ids_selecionados();
-      }
-   });
-
-   /**
-   * Adiciona todos os ids selecionados
-   */
-   $( "#btn_adicionar_todos" ).click(function() {
-      $("#sel_usuarios option").each(function() {        
-         var key = $(this).val();
-         var valor = $(this).text();
-         
-         // adiciona no sel_usuarios
-         $('#sel_usuarios_selecionados').append( $('<option>', { value : key }).text(valor) );      
-         // remove do sel_usuario
-         $('#sel_usuarios').find('option:contains('+valor+')').remove();    
-         guarda_ids_selecionados();
-      });    
-      
-   });
-
-   /**
-   * Retira todos os ids selecionados
-   */
-   $( "#btn_retirar_todos" ).click(function() {
-      $("#sel_usuarios_selecionados option").each(function() {        
-         var key   = $(this).val();
-         var valor = $(this).text();         
-         // adiciona no sel_usuarios
-         $('#sel_usuarios').append( $('<option>', { value : key }).text(valor) );      
-         // remove do sel_usuario
-         $('#sel_usuarios_selecionados').find('option:contains('+valor+')').remove();
-
-         guarda_ids_selecionados();
-      });    
-      
-   });
-
-   /**
-   * guarda os ids selecionados
-   */
-   function guarda_ids_selecionados() {
-      var key;
-      var ids = '';
-      $("#sel_usuarios_selecionados option").each(function() {        
-         key = $(this).val();
-         ids = ids + key+';';      
-      });
-      $('#ids_selecionados').val( ids );      
-  }
 
 
   $( document ).ready(function() {
-     guarda_ids_selecionados();
+//     guarda_ids_selecionados();
   });
   
 

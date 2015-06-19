@@ -27,8 +27,7 @@ class GrupoController extends AdminController {
    * Define os nomes dos filtros da view
    */
    public function define_nomes_filtros() {
-      $this->nomes_filtros = "filtro_grupo=>;".
-                             "filtro_descricao=>;";
+      $this->nomes_filtros = "filtro_grupo=>;";                             
    }
 
    /**
@@ -37,9 +36,7 @@ class GrupoController extends AdminController {
    public function index() {
       $this->preparar_filtros();
       if ( $this->filtros->tem_filtro ) {
-         $where = " grupo     LIKE '%{$this->filtros->filtro_grupo}%' AND
-                    descricao LIKE '%{$this->filtros->filtro_descricao}%'
-                ";         
+         $where = " grupo     LIKE '%{$this->filtros->filtro_grupo}%' ";         
       } else {
         $where = WHERE_TODOS_REGISTROS;
       }
@@ -102,8 +99,7 @@ class GrupoController extends AdminController {
       switch ( $acao ) {
          case 'incluir':            
             $grupo = new Grupo;
-            $grupo->grupo     = Input::get('grupo');
-            $grupo->descricao = Input::get('descricao');
+            $grupo->grupo     = Input::get('grupo');            
             $grupo->save();
             $this->incluir_grupo_users( $grupo->id );
             break;
@@ -139,14 +135,12 @@ class GrupoController extends AdminController {
       $rel->AliasNbPages();
       $rel->AddPage();
       $rel->SetFont('Times', 'B', 12);
-      $rel->Cell(50, 2,  utf8_decode('Grupo'    ), 0, 0, 'L');
-      $rel->Cell(80, 2,  utf8_decode('Descrição' ), 0, 0, 'L');
+      $rel->Cell(50, 2,  utf8_decode('Grupo'    ), 0, 0, 'L');      
       $rel->Line( 205, 27, 5, 27 );
       $rel->SetFont('Arial', '', 11);            
       foreach ($rs as $index => $registro) {
          $rel->Ln( 7 );
-         $rel->Cell(50, 8, $registro->grupo,     0, 0, 'L');
-         $rel->Cell(80, 8, utf8_decode($registro->descricao),  0, 0, 'L');         
+         $rel->Cell(50, 8, $registro->grupo,     0, 0, 'L');         
       }
       $rel->Output();
    }
