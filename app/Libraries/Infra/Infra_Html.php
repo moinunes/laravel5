@@ -12,17 +12,20 @@ use Request;
 class Infra_Html {
   
    /**
-   * Desenha uma HTML tag link
+   * Desenha uma HTML tag link,
+   *             se o usuário logado tiver permissão para acessar a rota+ação
    *
    * @param    string     acao
    * @param    int        id
    * @return   void   
    */
-   public static function criar_link( $acao = 'incluir', $id = 0 ) {
+   public static function criar_link_com_permissao( $acao = 'incluir', $id = 0 ) {
       self::obter_classe( $classe, $acao );
       $url = Request::url();
       $url = "$url/$acao/$id";
-      echo "<a href='$url'><span class='$classe'></span></a>&nbsp;&nbsp;";
+      if ( Infra_Permissao::tem_permissao( $acao ) ) {
+         echo "<a href='$url'><span class='$classe'></span></a>&nbsp;&nbsp;";        
+      }
    } // criar_link
 
    /**

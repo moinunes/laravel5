@@ -24,7 +24,7 @@ class CreateMenusTable extends Migration {
 			$table->increments('id');
 			$table->string('titulo','100');
 			$table->string('nome','100')->unique();
-			$table->string('rota','50');
+			$table->string('rota','50')->nullable();
 			$table->string('acao','50');
 			$table->integer('id_pai')->nullable();
 			$table->integer('posicao')->nullable();

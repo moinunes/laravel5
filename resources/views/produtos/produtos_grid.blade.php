@@ -8,6 +8,8 @@
 *
 ***************************************************************************/
 
+use App\Libraries\Infra\Infra_Html; // provisório :  por o apelido no /var/www/laravel5/config/app.php:
+
 $titulo = 'Cadastro - Produtos';
 
 ?>
@@ -45,9 +47,10 @@ $titulo = 'Cadastro - Produtos';
         <thead>
             <tr>
                 <th width='10%'>
-                  <!-- exibe os links [incluir,imprimir] -->
-                  <a href="{{ action('ProdutoController@crud',['incluir' ,0]) }}"><span class="btn btn-success glyphicon glyphicon-plus"></span></a>&nbsp;&nbsp;
-                  <a href="{{ action('ProdutoController@crud',['imprimir',0]) }}"><span class="btn btn-success glyphicon glyphicon-print"></span></a>&nbsp;&nbsp;
+                  <?php
+                  Infra_Html::criar_link_com_permissao( 'incluir'  );
+                  Infra_Html::criar_link_com_permissao( 'imprimir' );
+                  ?>
                 </th>                
                 <th width='15%'><a href="/produto/?order=codigo&posicao={{$filtros->posicao}}&page={{$filtros->page}}">Código</a></th>
                 <th width='15%'><a href="/produto/?order=descricao&posicao={{$filtros->posicao}}&page={{$filtros->page}}">Descrição</a></th>                
@@ -61,10 +64,11 @@ $titulo = 'Cadastro - Produtos';
             @foreach ( $rs as $item )                   
               <tr>
                 <td>
-                  <!-- exibe os links [consultar,alterar,excluir] -->
-                  <a href="{{ action('ProdutoController@crud',['consultar',$item->id]) }}"><span class="glyphicon glyphicon-search"></span></a>&nbsp;&nbsp;
-                  <a href="{{ action('ProdutoController@crud',['alterar'  ,$item->id]) }}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                  <a href="{{ action('ProdutoController@crud',['excluir'  ,$item->id]) }}"><span class="glyphicon glyphicon-trash"></span></a>&nbsp;&nbsp;                  
+                   <?php
+                        Infra_Html::criar_link_com_permissao( 'consultar', $item->id );
+                        Infra_Html::criar_link_com_permissao( 'alterar',   $item->id );
+                        Infra_Html::criar_link_com_permissao( 'excluir',   $item->id );
+                        ?>
                 </td>              
                 <td>{{ $item->codigo }}</td>
                 <td>{{ $item->descricao }}</td>

@@ -6,6 +6,7 @@ use DB;
 use Auth;
 use Input;
 use Request;
+use app\User;
 
 /*
 * Classe Infra_Permissao
@@ -15,7 +16,6 @@ use Request;
 */
 
 class Infra_Permissao {
-
    /**
    * Obtém os menus superiores e Permissões
    */
@@ -41,33 +41,58 @@ class Infra_Permissao {
                                  WHERE id_pai = :id_pai", [ 'id_pai' => $id_menu ] );
    } // obter_menus_itens
 
-   public function tem_permissao() {
-      $resultado = false;
-      //$id_user = Auth::user()->id;
-      $rota    = Request::segment(1);
-      Infra_Permissao::obter_menu( $id_menu, $rota );
-      Infra_Permissao::obter_grupos( $grupos );
-      foreach ( $grupos as $indice => $item ) {
-           //dd($id_menu);
-          if  ( $this->permite_acesso( $item->id_grupo, $id_menu ) ) {
-             $resultado = true;
-             break;
-          }
-      }   
-      return $resultado;
-   }   
-
-   protected function obter_menu( &$id_menu, $nome_menu ) {
-      $resultado = DB::select( " SELECT id
-                                 FROM tbmenus                                    
-                                 WHERE nome = :nome", [ 'nome' => $nome_menu ] );
-      //dd($nome_menu);
-      $resultado = (object)$resultado[0];
+   public static function tem_permissao( $acao = null ) {      
+      $resultado = false;      
+      $rota      = Request::segment(1);
       
-      $id_menu = $resultado->id;
+      // uuário master
+      $user = User::find( Auth::user()->id );
+      if ( $user->master ) {
+         return true;
+      }
+
+     // print $rota.' - '.$acao.' - ';      
+
+      if ( $rota == 'home' || $rota == 'tools' || '' ) {
+         return true;
+      }
+
+
+      // verifica permissão
+      Infra_Permissao::obter_menu( $id_menu, $rota, $acao );
+      if ( $id_menu == '' ) {         
+         print 'id_menu não encontrado';
+         return false;
+      }
+
+      Infra_Permissao::obter_grupos( $grupos );      
+      foreach ( $grupos as $indice => $item ) {              
+         if ( self::permite_acesso( $item->id_grupo, $id_menu ) ) {
+            $resultado = true;            
+            break;
+         }
+      }   
+      
+      return $resultado;
+   } // tem_permissao
+
+   protected static function obter_menu( &$id_menu, $rota, $acao = null ) {
+      $id_menu = '';
+      if ( $acao == null ) {
+         $registro = DB::select( " SELECT id FROM tbmenus WHERE rota = :rota", [ 'rota' => $rota ] );
+      } else {
+         $registro = DB::select( " SELECT id FROM tbmenus WHERE rota = :rota AND acao = :acao", [ 'rota' => $rota, 'acao' => $acao ] );
+      }
+      
+      if ( $registro ) {
+         $registro = (object)$registro[0];
+         $id_menu = $registro->id;
+         //dd($id_menu);
+      }
+
    }
 
-   protected function obter_grupos( &$resultado ) {
+   protected static function obter_grupos( &$resultado ) {
       $id_user = Auth::user()->id;
       $resultado = false;
       $resultado = DB::select( " SELECT id_grupo,id_user
@@ -77,11 +102,12 @@ class Infra_Permissao {
       return $resultado;
    }
 
-   protected function permite_acesso( $id_grupo, $id_menu ) {      
+   protected static function permite_acesso( $id_grupo, $id_menu ) {      
       $resultado = false;
       $query = DB::select( " SELECT id_grupo,id_menu
                                  FROM tbpermissoes
                                  WHERE id_grupo = :id_grupo AND id_menu = :id_menu", [ 'id_grupo' => $id_grupo, 'id_menu' => $id_menu ] );
+      //dd($id_menu);
       if ( $query ) {
          $resultado = true;
       } 

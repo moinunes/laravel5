@@ -2,6 +2,9 @@
 
 @section('content')
 
+<?php
+
+?>
 
 <div class="row">
    <div class="col-md-10 col-md-offset-1">
@@ -30,5 +33,9 @@
 
    </div>
 </div>
+
+@if(Session::has('mensagem'))
+  <p class="alert alert-info">{{Session::get('mensagem') }}</p>
+@endif
 
 @endsection

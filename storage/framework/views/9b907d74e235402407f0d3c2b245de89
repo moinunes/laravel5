@@ -1,5 +1,8 @@
 <?php $__env->startSection('content'); ?>
 
+<?php
+
+?>
 
 <div class="row">
    <div class="col-md-10 col-md-offset-1">
@@ -28,6 +31,10 @@
 
    </div>
 </div>
+
+<?php if(Session::has('mensagem')): ?>
+  <p class="alert alert-info"><?php echo e(Session::get('mensagem')); ?></p>
+<?php endif; ?>
 
 <?php $__env->stopSection(); ?>
 

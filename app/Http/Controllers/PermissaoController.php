@@ -112,6 +112,7 @@ class PermissaoController extends AdminController {
    *  Permissao negada
    */
    protected function show() {
+      dd('eee');
       return view( 'permissoes.permissao_negada' );
    }
 

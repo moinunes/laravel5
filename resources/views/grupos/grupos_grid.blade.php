@@ -46,8 +46,8 @@ $titulo = 'Cadastro - Grupos';
                <tr>
                   <th width='15%'>                  
                      <?php
-                     Infra_Html::criar_link( 'incluir'  );
-                     Infra_Html::criar_link( 'imprimir' );
+                     Infra_Html::criar_link_com_permissao( 'incluir'  );
+                     Infra_Html::criar_link_com_permissao( 'imprimir' );
                      ?>
                   </th>                
                   <th width='85%'>
@@ -60,9 +60,9 @@ $titulo = 'Cadastro - Grupos';
                   <tr>
                      <td>                        
                         <?php
-                        Infra_Html::criar_link( 'consultar', $item->id );
-                        Infra_Html::criar_link( 'alterar',   $item->id );
-                        Infra_Html::criar_link( 'excluir',   $item->id );
+                        Infra_Html::criar_link_com_permissao( 'consultar', $item->id );
+                        Infra_Html::criar_link_com_permissao( 'alterar',   $item->id );
+                        Infra_Html::criar_link_com_permissao( 'excluir',   $item->id );
                         ?>                        
                      </td>
                      <td>{{ $item->grupo }}</td>

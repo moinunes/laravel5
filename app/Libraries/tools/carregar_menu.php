@@ -100,7 +100,6 @@ class Carregar_Menu {
       $menu->titulo = utf8_decode($item['titulo']);
       $menu->nome   = utf8_decode($item['nome']);
       if ( $item['nivel'] == "1" ) {
-         //dd($item['rota']);
          $menu->rota = $item['rota'];
       }
       if ( $item['nivel'] == "2" ) {

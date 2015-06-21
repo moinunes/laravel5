@@ -20,7 +20,7 @@
       <ITEM titulo="Produtos" nome="produto" rota="produto" nivel="1" >
          <ITEM titulo="Incluir"   nome="produto_incluir"   rota="produto" acao="incluir"   nivel="2" />
          <ITEM titulo="Alterar"   nome="produto_alterar"   rota="produto" acao="alterar"   nivel="2" />        
-         <ITEM titulo="Excluir"   nome="produto_excluir"   rota="produto" acao="exluir"    nivel="2" />
+         <ITEM titulo="Excluir"   nome="produto_excluir"   rota="produto" acao="excluir"    nivel="2" />
          <ITEM titulo="Consultar" nome="produto_consultar" rota="produto" acao="consultar" nivel="2" />
          <ITEM titulo="Imprimir"  nome="produto_imprimir"  rota="produto" acao="imprimir"  nivel="2" />
       </ITEM>
@@ -33,7 +33,7 @@
       <ITEM titulo="Clientes" nome="clientes" rota="clientes" nivel="1" >
          <ITEM titulo="Incluir"   nome="clientes_incluir"   rota="clientes" acao="incluir"   nivel="2" />
          <ITEM titulo="Alterar"   nome="clientes_alterar"   rota="clientes" acao="alterar"   nivel="2" />
-         <ITEM titulo="Excluir"   nome="clientes_excluir"   rota="clientes" acao="exluir"    nivel="2" />
+         <ITEM titulo="Excluir"   nome="clientes_excluir"   rota="clientes" acao="excluir"    nivel="2" />
          <ITEM titulo="Consultar" nome="clientes_consultar" rota="clientes" acao="consultar" nivel="2" />
          <ITEM titulo="Imprimir"  nome="clientes_imprimir"  rota="clientes" acao="imprimir"  nivel="2" />
       </ITEM>      
@@ -44,7 +44,7 @@
       <ITEM titulo="Usuários" nome="user" rota="user" nivel="1" >
          <ITEM titulo="Incluir"   nome="user_incluir"   rota="user" acao="incluir"   nivel="2" />
          <ITEM titulo="Alterar"   nome="user_alterar"   rota="user" acao="alterar"   nivel="2" />
-         <ITEM titulo="Excluir"   nome="user_excluir"   rota="user" acao="exluir"    nivel="2" />
+         <ITEM titulo="Excluir"   nome="user_excluir"   rota="user" acao="excluir"    nivel="2" />
          <ITEM titulo="Consultar" nome="user_consultar" rota="user" acao="consultar" nivel="2" />
          <ITEM titulo="Imprimir"  nome="user_imprimir"  rota="user" acao="imprimir"  nivel="2" />
       </ITEM>
@@ -52,7 +52,7 @@
       <ITEM titulo="Grupo" nome="grupo" rota="grupo" nivel="1" >
          <ITEM titulo="Incluir"   nome="grupo_incluir"   rota="grupo" acao="incluir"   nivel="2" />
          <ITEM titulo="Alterar"   nome="grupo_alterar"   rota="grupo" acao="alterar"   nivel="2" />
-         <ITEM titulo="Excluir"   nome="grupo_excluir"   rota="grupo" acao="exluir"    nivel="2" />
+         <ITEM titulo="Excluir"   nome="grupo_excluir"   rota="grupo" acao="excluir"    nivel="2" />
          <ITEM titulo="Consultar" nome="grupo_consultar" rota="grupo" acao="consultar" nivel="2" />
          <ITEM titulo="Imprimir"  nome="grupo_imprimir"  rota="grupo" acao="imprimir"  nivel="2" />
       </ITEM>

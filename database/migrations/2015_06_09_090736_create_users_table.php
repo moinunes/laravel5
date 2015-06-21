@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration {
             $table->increments('id');
             $table->string('name',255);
             $table->string('email',255)->unique();
-            $table->string('password',255);
+            $table->string('password',255);            
             $table->string('remember_token',255);            
             $table->string('master',1);   
             $table->timestamps();
