@@ -46,6 +46,7 @@ class Authenticate {
 			}
 
 		} else {
+         
          // nesse momento o usuário está logado
          $rota = Request::segment(1);
          // verifica a permssão              
@@ -53,7 +54,7 @@ class Authenticate {
             return Redirect::to( 'home' )->with( 'mensagem', 'Permissão negada.' );
          }          
       }
-      
+
 		return $next($request);
 	}
 

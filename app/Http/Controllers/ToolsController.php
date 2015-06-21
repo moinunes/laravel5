@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Request;
 use DB;
+use Auth;
+
 
 use Input;
 
@@ -16,11 +18,21 @@ use App\Libraries\tools\carregar_menu;
 class ToolsController extends Controller {
 
    /**
+   * Construtor padrão   
+   */
+   public function __construct() {  
+         
+       $this->middleware( 'auth' );
+   }
+
+
+   /**
    * index
    */
    public function index() {
       print "Ferramentas disponíveis:<br>";
       print '/carregar_menu';
+      die();
    }
 
    /**

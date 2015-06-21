@@ -45,18 +45,16 @@ class Infra_Permissao {
       $resultado = false;      
       $rota      = Request::segment(1);
       
-      // uuário master
+      // usuário master - acesso liberado
       $user = User::find( Auth::user()->id );
       if ( $user->master ) {
          return true;
       }
 
-     // print $rota.' - '.$acao.' - ';      
-
-      if ( $rota == 'home' || $rota == 'tools' || '' ) {
+      // rotas com acesso liberado
+      if ( $rota == 'home' ) {
          return true;
       }
-
 
       // verifica permissão
       Infra_Permissao::obter_menu( $id_menu, $rota, $acao );
