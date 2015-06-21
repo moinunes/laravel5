@@ -18,7 +18,7 @@
    <!-- checkboxtree-->
    <link type="text/css" href="/checkboxtree/library/jquery-ui-1.8.12.custom/css/smoothness/jquery-ui-1.8.12.custom.css" rel="stylesheet"/>
    <link type="text/css" href="/checkboxtree/jquery.checkboxtree.css" rel="stylesheet" >
-   <script src="/checkboxtree/jquery.checkboxtree.js"></script>
+   <script type="text/javascript" src="/checkboxtree/jquery.checkboxtree.js"></script>
 
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

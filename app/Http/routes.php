@@ -36,7 +36,7 @@ Route::resource('grupo',        'GrupoController'       );
 Route::any('grupo',             'GrupoController@index' );
 Route::get('grupo/{acao}/{id}', 'GrupoController@crud'  );
 
-//.. grupo
+//.. permissao
 Route::resource('permissao',        'PermissaoController'       );
 Route::any('permissao',             'PermissaoController@index' );
 Route::get('permissao/{acao}/{id}', 'PermissaoController@crud'  );

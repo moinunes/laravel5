@@ -26,10 +26,10 @@ class Infra_Menu {
       echo '<li><a href="/">Home</a></li>';
       foreach( $menu_superior as $superior ) {         
          $this->obter_menus_itens( $menu_itens, $superior->id );         
-         echo '<li><a href="#">'.utf8_decode($superior->titulo).'</a>';
+         echo '<li><a href="#">'.$superior->titulo.'</a>';
          echo '<ul>';
          foreach( $menu_itens as $item ) {
-            echo "<li><a href='/$item->rota'>".utf8_decode($item->titulo)."</a></li>";
+            echo "<li><a href='/$item->rota'>".$item->titulo."</a></li>";
          }         
          echo '</ul>';
       }

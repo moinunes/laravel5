@@ -2,47 +2,20 @@
 /**************************************************************************
 *
 * View.....: permissoes_form 
-* Descrição: Cadastro de permissões
+* Descrição: Cadastro de permissões dos grupos
 * Objetivo.: Exibir Formulário para: cadastrar permissões dos grupos de usuários
 *
 ***************************************************************************/
 
-$titulo = 'Permissoes';
+use App\Libraries\Infra\Infra_Permissao;
 
-//dd($table->grupo);
+$titulo   = 'Permissoes';
+$id_grupo = $table->id;
 
 ?>
 
 @extends('layouts.layout_main')
 @section('content')
-
-
-<style type="text/css">
-body {
-font-family: verdana, arial;
-font-size: 0.8em;
-}
-
-code {
-white-space: pre;
-}
-</style>
-
-<!-- start checkboxTree configuration -->
-
-
-
-<!-- end checkboxTree configuration -->
-
-<script>
-$(document).ready(function() {
-  
-  $('.jquery').each(function() {
-    eval($(this).html());
-  });
-  $('.button').button();
-});
-</script>
 
 <div class="row">
   <div class="col-md-10 col-md-offset-1">      
@@ -51,100 +24,76 @@ $(document).ready(function() {
       {{$titulo}}
     </div>
          
-    <div class="div_form">     
-      {!! Form::open( [ 'method'=>'PATCH','action'=>['PermissaoController@update'],'class'=>'form-signup form-paddind']) !!}        
+    <div class="div_form">      
+      
+      {!! Form::open(array('url' => [ 'permissao/update', null],'method' => 'PUT')) !!}
+      <input type="hidden" name="acao"  value="{{$acao}}">
+      <input type="hidden" id="id_grupo" name="id_grupo" value="{{$id_grupo}}">  
       <table border="0" width="100%">
         <tr>
           <td width="5%">Grupo:</td>    
           <td width="95%"  class='obrigatorio'>{{$table->grupo}}</td>    
         </tr>            
       </table> 
-
+      
       <div id="tabs-1">
-        
-          <code class="jquery" lang="text/javascript">
-        $('#tree1').checkboxTree();    
-         </code>
-
-          <ul id="tree1">
-          <li><input type="checkbox"><label>Auxiliares</label>
-          <ul>
-          <li><input type="checkbox"><label>Produto</label>
-          <ul>
-          <li><input type="checkbox"><label>Incluir</label>
-          <li><input type="checkbox"><label>Alterar</label>
-          </ul>
-          </ul>
-          <ul>
-          <li><input type="checkbox"><label>Cliente</label>
-          <ul>
-          <li><input type="checkbox"><label>Incluir</label>
-          <li><input type="checkbox"><label>Alterar</label>
-          <li><input type="checkbox"><label>Excluir</label>
-          </ul>
-          </ul>
-          </li>
-          <li><input type="checkbox"><label>Administrativo</label>
-          <ul>
-          <li><input type="checkbox"><label>Grupo</label>
-          <ul>
-          <li><input type="checkbox"><label>Node 2.1.1</label>
-          </ul>
-          <li><input type="checkbox"><label>Node 2.2</label>
-          <ul>
-          <li><input type="checkbox"><label>Node 2.2.1</label>
-          <li><input type="checkbox"><label>Node 2.2.2</label>
-          <li><input type="checkbox"><label>Node 2.2.3</label>
-          <ul>
-          <li><input type="checkbox"><label>Node 2.2.3.1</label>
-          <li><input type="checkbox"><label>Node 2.2.3.2</label>
-          </ul>
-          <li><input type="checkbox"><label>Node 2.2.4</label>
-          <li><input type="checkbox"><label>Node 2.2.5</label>
-          <li><input type="checkbox"><label>Node 2.2.6</label>
-          </ul>
-          </ul>
-          </ul>
-          </div>
-
-
-
-      {!! Form::close() !!}
-
-     </div>
-
-
-
-
-
-    @if ( count($errors) > 0)
-      <div id="validar" class="panel panel-footer cor_branca">       
-          Erros:<br />
-          <ul  class="alert alert-danger">
-            @foreach ( $errors->all() as $e )                     
-              <li>{{ $e }}</li>
-            @endforeach
-          </ul>
+        <ul id="tree1">
+          <?php
+          $permissao = new infra_Permissao();
+          $permissao->obter_menus_superior( $menus_superior, $id_grupo  );
+          ?>
+          @foreach ( $menus_superior as $superior )
+            <?php $checked = $superior->permite != '' ? 'checked' : ''; ?>
+            <li><input type="checkbox" id="txtPermissao_{{$superior->id_menu}}" name="txtPermissao_{{$superior->id_menu}}" {{$checked}} ><label>{{$superior->titulo}}</label>
+               <?php               
+               $permissao->obter_menus_itens( $menus_itens, $superior->id_menu, $id_grupo);
+               ?>
+               @foreach ( $menus_itens as $itens )
+                 <?php $checked = $itens->permite != '' ? 'checked' : ''; ?>
+                 <ul>
+                   <li><input type="checkbox" id="txtPermissao_{{$itens->id_menu}}" name="txtPermissao_{{$itens->id_menu}}" {{$checked}} ><label>{{$itens->titulo}}</label>
+                   <ul>
+                      <?php
+                      $permissao->obter_menus_itens( $sub_itens, $itens->id_menu, $id_grupo );
+                      ?>
+                      @foreach ( $sub_itens as $sub )
+                        <?php $checked = $sub->permite != '' ? 'checked' : ''; ?>
+                        <li><input type="checkbox" id="txtPermissao_{{$sub->id_menu}}" name="txtPermissao_{{$sub->id_menu}}" {{$checked}} ><label>{{$sub->titulo}}</label>
+                      @endforeach     
+                   </ul>
+                   </li>
+                 </ul>
+               @endforeach
+            </li>  
+          @endforeach
+          <br>
       </div>
-    @endif
-     
-     
-     
-     
-     
 
+      <table border="0" width="100%">   
+        <tr>                  
+          <td>              
+            <hr class="hr1">
+            <div class="pull-right"> 
+               <a href="/permissao/" class="btn btn-default">Cancelar</a>
+               <button type="submit" id="btn_confirmar" class="btn btn-success">Confirmar</button>
+               <br><br><br><br>
+            </div> 
+          </td>
+        </tr>        
+      </table> 
+      {!! Form::close() !!}      
+
+    </div>
   </div>
 </div>
 
-<script>  
-   
-
-
-  $( document ).ready(function() {
-//     guarda_ids_selecionados();
+<script>
+  $(document).ready(function() {
+    $('#tree1').checkboxTree();
   });
-  
 
 </script>
+
+
 
 @endsection

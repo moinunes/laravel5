@@ -8,6 +8,8 @@
 *
 ***************************************************************************/
 
+use App\Libraries\Infra\Infra_Html; // provisório :  por o apelido no /var/www/laravel5/config/app.php:
+
 $titulo = 'Cadastro - Grupos';
 
 ?>
@@ -38,43 +40,43 @@ $titulo = 'Cadastro - Grupos';
             <?= Form::close();?>
          </fieldset>
 
-    <!-- exibe a grid da pesquisa -->
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th width='15%'>
-                  <!-- exibe os links [incluir,imprimir] -->
-                  <a href="{{ action('GrupoController@crud',['incluir' ,0]) }}"><span class="btn btn-success glyphicon glyphicon-plus"></span></a>&nbsp;&nbsp;
-                  <a href="{{ action('GrupoController@crud',['imprimir',0]) }}"><span class="btn btn-success glyphicon glyphicon-print"></span></a>&nbsp;&nbsp;
-                </th>                
-                <th width='85%'><a href="/grupo/?order=grupo&posicao={{$filtros->posicao}}&page={{$filtros->page}}">Grupo</a></th>
-            </tr>
-        </thead>
+         <!-- exibe a grid da pesquisa -->
+         <table class="table table-bordered table-hover">
+            <thead>
+               <tr>
+                  <th width='15%'>                  
+                     <?php
+                     Infra_Html::criar_link( 'incluir'  );
+                     Infra_Html::criar_link( 'imprimir' );
+                     ?>
+                  </th>                
+                  <th width='85%'>
+                     <a href="/grupo/?order=grupo&posicao={{$filtros->posicao}}&page={{$filtros->page}}">Grupo</a>
+                  </th>
+               </tr>
+            </thead>
+            <tbody>
+               @foreach ( $rs as $item )                   
+                  <tr>
+                     <td>                        
+                        <?php
+                        Infra_Html::criar_link( 'consultar', $item->id );
+                        Infra_Html::criar_link( 'alterar',   $item->id );
+                        Infra_Html::criar_link( 'excluir',   $item->id );
+                        ?>                        
+                     </td>
+                     <td>{{ $item->grupo }}</td>
+                  </tr>
+               @endforeach
+            </tbody>
+         </table>
+      </div>    
 
-        <tbody>
-            @foreach ( $rs as $item )                   
-              <tr>
-                <td>
-                  <!-- exibe os links [consultar,alterar,excluir] -->
-                  <a href="{{ action('GrupoController@crud',['consultar',$item->id]) }}"><span class="glyphicon glyphicon-search"></span></a>&nbsp;&nbsp;
-                  <a href="{{ action('GrupoController@crud',['alterar'  ,$item->id]) }}"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
-                  <a href="{{ action('GrupoController@crud',['excluir'  ,$item->id]) }}"><span class="glyphicon glyphicon-trash"></span></a>&nbsp;&nbsp;                  
-                </td>              
-                <td>{{ $item->grupo }}</td>
-            </tr>
-           @endforeach
+      <div class="div_paginator">
+         {!!$rs->render()!!}
+      </div>
 
-        </tbody>
-
-     </table>
-     </div>    
-
-     <div class="div_paginator">
-        {!!$rs->render()!!}
-     </div>
-
-
-  </div>    
+   </div>    
 </div>
 
 @endsection
