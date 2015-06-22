@@ -49,7 +49,7 @@ class Authenticate {
          
          // nesse momento o usuário está logado
          $rota = Request::segment(1);
-         // verifica a permssão              
+         // verifica a permissão              
          if ( !Infra_Permissao::tem_permissao() ) {            
             return Redirect::to( 'home' )->with( 'mensagem', 'Permissão negada.' );
          }          
