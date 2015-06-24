@@ -117,6 +117,7 @@ class GrupoController extends AdminController {
             break;
       }
       return redirect( 'grupo' );
+      
    }
 
    

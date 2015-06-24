@@ -5,7 +5,15 @@ use App\Libraries\Infra\Infra_Permissao;
 use Auth;
 use Request;
 
-class PermissaoMiddlewarexx {
+
+
+
+// em desuso
+
+
+
+
+class PermissaoMiddlewarexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx {
 
 	/**
 	 * Handle an incoming request.

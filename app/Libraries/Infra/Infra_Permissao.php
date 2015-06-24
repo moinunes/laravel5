@@ -68,17 +68,23 @@ class Infra_Permissao {
          return true;
       }
 
-      // inserir aqui as "rotas" com acesso liberado.      
+      // inserir aqui as "rotas" com acesso liberado.
       if ( $rota == '' || $rota == 'home' ) {
          return true;
       }
 
+      // rota: tools somente para usuário master
+      if ( $rota == 'tools' && !$user->master ) {
+         return false;
+      }      
+
       // obtém o id do menu para verificar a permissão
       Infra_Permissao::obter_id_menu( $id_menu, $rota, $acao );
       if ( $id_menu == '' ) {         
-         dd( 'id_menu não encontrado - problemas na tabela: tbmenus' );         
+         dd( 'id_menu não encontrado - problemas na tabela: tbmenus' );
       }
-            
+      
+      // verifica permissão      
       Infra_Permissao::obter_grupos_do_usuario( $grupos );      
       foreach ( $grupos as $indice => $item ) {
          if ( self::permite_acesso( $item->id_grupo, $id_menu ) ) {

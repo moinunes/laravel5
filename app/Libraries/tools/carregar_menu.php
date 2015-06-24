@@ -32,7 +32,7 @@ class Carregar_Menu {
 	   $this->excluir_menus();	   
 	   $this->enumerar_posicao();
 
-	   dd(' final ');
+	   //dd(' final ');
 	} 	// executar
 
    /**

@@ -43,4 +43,4 @@ Route::get('permissao/{acao}/{id}', 'PermissaoController@crud'  );
 
 
 //.. tools
-Route::resource( 'tools', 'ToolsController'       );
+Route::resource( 'tools', 'ToolsController' );
