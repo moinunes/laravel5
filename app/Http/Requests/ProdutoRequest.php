@@ -48,3 +48,4 @@ class ProdutoRequest extends Request {
 	}
 
 }
+
